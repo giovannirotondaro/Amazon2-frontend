@@ -1,0 +1,75 @@
+html{
+  min-width: 1100px !important;
+  width: 100% !important;
+  padding: 0% !important;
+  margin: 0% !important;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+  
+body{
+  width: 100% !important;
+  height: 1300px;
+  padding: 0% !important;
+  margin: 0% !important;
+}
+
+#ultimaImmagineLatoSinistro{
+  margin-left: 1.5% !important;
+}
+
+.principale {
+  width: 100%;
+  height: 800px;
+}
+
+#divImmaginiLatoSinistro{
+  width: 10%;
+  height: 800px;
+}
+
+#divImmaginiLatoDestro{
+  width: 10%;
+  height: 800px;
+}
+
+#divParteCentrale{
+  width: 80%;
+  height: 1300px;
+  background-color: rgb(231, 231, 230);
+}
+
+#rigaContieneTutteRecensioni{
+  padding: 5%;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+
+#divContenutoRecensioni{
+  width: 100%;
+}
+
+#parteSinistraSingolaRecensione{
+  width: 10%;
+}
+
+#parteCentraleSingolaRecensione{
+  width: 70%;
+}
+
+#parteDestraSingolaRecensione{
+  width: 20%;
+}
+
+#rigaBottoneApprovaRecensione,#rigaBottoneNonApprovaRecensione{
+  margin: 0;
+}
+
+#divNonApprovaRecensione{
+  margin-bottom: 3%;
+}
+
+#divApprovaRecensione{
+  margin-bottom: 3%;
+}

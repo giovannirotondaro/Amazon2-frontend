@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Techzon</title>
+</head>
+<body>
+  <div class="row" id="laRiga">
+    <div id="divFor">
+      <h2 [style]="{'text-align': 'center', 'top': '30px', 'position': 'relative'}"*ngIf="carrello.length === 0">Il carrello è vuoto</h2>
+      <ng-template ngFor let-carrello [ngForOf]='carrello' *ngIf="carrello.length > 0" pTemplate="listItem">
+      <div id="mainDiv">
+        <div id="listProduct">
+            <div class="product-list-item row">
+                <div id="divZero">
+                  <img id="imgPrd" src="{{carrello.prodotto.url1}}" [routerLink]="['/prodotto/' + carrello.prodotto.id]">
+                </div>
+                <div id="divUno" class="product-list-detail">
+                    <div class="product-name" [routerLink]="['/prodotto/' + carrello.prodotto.id]"><h3 id="nomeProdotto">{{carrello.prodotto.titolo}}</h3></div>
+                    <h6><strong>Colore: </strong>{{carrello.prodotto.colore}}</h6>
+                    <div class="product-user"><h6><strong>Venduto da: </strong>{{carrello.prodotto.vendutoDa.cognome}} {{carrello.prodotto.vendutoDa.nome}}</h6></div>
+                    <span *ngIf="carrello.prodotto.disponibile then tB else eB"></span>
+                      <ng-template #tB> 
+                        <p-chip label="DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'darkgreen', background: 'yellowgreen'}"></p-chip>
+                        <br>
+                        <br>
+                        <div id="quantityDiv" class="row">
+                          <p-dropdown appendTo="body" [options]="getQuantita(carrello.prodotto.id)" [(ngModel)]="carrello.quantita" (onChange)="updateQuantity(carrello.prodotto, carrello.carrello.id, $event)" optionLabel="name" optionValue="code" [style]="{'min-width': '180px', 'max-width': '180px', 'width': '180px'}"></p-dropdown>
+                          <div class="divBottoneRimuovi"></div>
+                          <button pButton pRipple type="button" label="Rimuovi" (click)="removeProduct(carrello.carrello.id, carrello.prodotto.id)" class="p-button-outlined p-button-danger"></button>
+                        </div>
+                      </ng-template>
+                      <ng-template #eB> 
+                        <p-chip label="NON DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'black', background: 'salmon'}"></p-chip>
+                        <br>
+                        <br>
+                        <div id="quantityDiv" class="row">
+                          <button pButton pRipple type="button" label="Rimuovi" (click)="removeProduct(carrello.carrello.id, carrello.prodotto.id)" class="p-button-outlined p-button-danger"></button>
+                        </div>
+                      </ng-template>
+                </div>
+                <div id="divDue">
+                  <span class="product-price-sconto"><strong>€{{(carrello.prodotto.prezzo - (carrello.prodotto.prezzo * (carrello.prodotto.sconto / 100))).toFixed(2)}}</strong></span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <div id="divCard">
+      <p-card [style]="{width: '135%', 'border': '1px solid var(--surface-d)'}" styleClass="p-card-shadow">
+        <h4><strong>Totale carrello</strong></h4>
+        <hr>
+        <p *ngIf="carrello.length === 0">Nessun articolo</p>
+          <ng-template ngFor let-cart [ngForOf]='carrello' *ngIf="carrello.length > 0">
+              <p>{{cart.prodotto.titolo}} <strong>(x{{cart.quantita}})</strong></p>
+          </ng-template>
+        <hr>
+        <h5><strong>{{totale.toFixed(2)}} €</strong></h5>
+        <hr>
+        <ng-container *ngIf="carrello.length === 0 || !disponibile; then thenBlock else elseBlock"></ng-container>
+          <ng-template #thenBlock><button pButton type="button" class="p-button-warning" label="Procedi con l'ordine" [disabled]="true" icon="pi pi-check"></button></ng-template>
+          <ng-template #elseBlock><button pButton type="button" class="p-button-warning" label="Procedi con l'ordine" [routerLink]="['/carrello/riepilogo']" icon="pi pi-check"></button></ng-template>
+      </p-card>
+    </div>
+  </div>
+</body>
+</html>

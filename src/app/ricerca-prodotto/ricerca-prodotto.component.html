@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <p-dataView #dv [value]="products" [paginator]="true" [rows]="8" filterBy="name" [sortOrder]="sortOrder" layout="list">
+        <ng-template pTemplate="header">
+            <div id="header" class="row justify-content-between">
+                <div id="sortDrop" class="row justify-content-between">
+                    <p-dropdown id="priceDropdown" #priceDropdown [(ngModel)]="selectedRange" [options]="sortOptionsPrice" placeholder="{{priceWord}}" (onChange)="onSortChangePrice($event);" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+                    <p-dropdown id="dateDropdown" #dateDropdown [(ngModel)]="selectedRange" [options]="sortOptionsDate" placeholder="{{dateWord}}" (onChange)="onSortChangeDate($event);" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+                </div>
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+        </ng-template>
+        <ng-template let-product pTemplate="listItem">
+            <div id="listProduct" class="p-col-12">
+                <div class="product-list-item row">
+                    <div id="divImmagine">
+                        <img id="imgProdotti" src="{{product.url1}}" [routerLink]="['/prodotto/' + product.id]">
+                    </div>
+                    <div class="product-list-detail">
+                        <div class="product-name" [routerLink]="['/prodotto/' + product.id]"><h3>{{product.titolo}}</h3></div>
+                        <div class="product-description"><h5>{{product.anteprima}}</h5></div>
+                        <span *ngIf="product.disponibile; then thenBlock else elseBlock"></span>
+                            <ng-template #thenBlock><p-tag styleClass="p-mr-2" severity="success" value="DISPONIBILE"></p-tag></ng-template>
+                            <ng-template #elseBlock><p-tag styleClass="p-mr-2" severity="danger" value="NON DISPONIBILE"></p-tag></ng-template>
+                        <br>
+                        <br>
+                        <div class="product-user"><h6>Venduto da: <strong>{{product.vendutoDa.cognome}} {{product.vendutoDa.nome}}</strong></h6></div>
+                        <div class="product-user"><h6>Aggiunto il: <strong>{{product.dataAggiunta}}</strong></h6></div>
+                    </div>
+                    <div class="product-list-price" *ngIf="product.sconto == 0; else noSconto">
+                        <span class="product-price"><strong>€{{product.prezzo}}</strong></span>
+                    </div>
+                    <ng-template #noSconto>
+                        <div class="product-list-price">
+                            <span class="product-price-old">€{{product.prezzo}}</span>
+                            <span class="product-price-sconto"><strong>€{{(product.prezzo - (product.prezzo * (product.sconto / 100))).toFixed(2)}}</strong></span>
+                        </div>
+                    </ng-template>
+                    <div class="product-list-action">
+                        <div id="etichetta">
+                            <i class="pi pi-tag product-category-icon"></i><span class="product-category"> {{product.categoria}}</span> 
+                        </div>
+                        <div class="sub-action">
+                            <p-button type="button" (click)="aggiungiAiPreferiti(product)" styleClass="p-button p-button-rounded p-mr-2" icon="pi pi-star-fill" [style]="{'background-color': 'rgb(0,175,227)', border: 'none'}"></p-button>
+                        </div>
+                        <div class="sub-action">
+                            <p-button type="button" styleClass="p-button-secondary p-button-rounded p-mr-2" [routerLink]="['/prodotto/' + product.id]" icon="pi pi-search-plus"></p-button>
+                        </div>
+                        <div class="sub-action">
+                            <p-button (click)="addInCart(product.id)" type="button" styleClass="p-button-success p-button-rounded" icon="pi pi-shopping-cart" [disabled]="product.disponibile === false"></p-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-product pTemplate="gridItem">
+            <div id="divProdotti" class="row">
+                <div id="cardProdotto" class="product-grid-item card">
+                    <div>
+                        <div id="divTag" class="row justify-content-between">
+                            <span><i class="pi pi-tag product-category-icon"></i> {{product.categoria}}</span>
+                            <button pButton pRipple type="button" [style]="{width: '30px', height: '30px'}" icon="pi pi-shopping-cart" class="p-button-rounded" [disabled]="product.disponibile === false"></button>
+                        </div>
+                    </div>
+                    <div class="product-grid-item-content">
+                        <div id="">
+                            <img id="imgProdottiGrid" src="{{product.url1}}" [routerLink]="['/prodotto/' + product.id]"/>
+                        </div>
+                        <div class="product-name" [routerLink]="['/prodotto/' + product.id]"><h5>{{product.titolo}}</h5></div>
+                        <div id="divStatus">
+                            <span *ngIf="product.disponibile; then thenBlock else elseBlock"></span>
+                            <ng-template #thenBlock><p-tag styleClass="p-mr-2" severity="success" value="DISPONIBILE"></p-tag></ng-template>
+                            <ng-template #elseBlock><p-tag styleClass="p-mr-2" severity="danger" value="NON DISPONIBILE"></p-tag></ng-template>
+                        </div>
+                    </div>
+                    <div id="footerProdotto" class="row">
+                        <div *ngIf="product.sconto == 0; else noSconto">
+                            <span class="product-price"><h5>€{{product.prezzo}}</h5></span>
+                        </div>
+                        <ng-template #noSconto>
+                            <div>
+                                <span class="product-price-old">€{{product.prezzo}}</span>
+                                <label class="product-price-sconto"><h5>€{{(product.prezzo - (product.prezzo * (product.sconto / 100))).toFixed(2)}}</h5></label>
+                            </div>
+                        </ng-template>
+                        <span id="addedDate">Aggiunto il: <br>{{product.dataAggiunta}}</span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+    <p-dialog [(visible)]="displayDialog" header="Avviso" [modal]="true" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+        <p><strong>{{avviso}}</strong></p>
+            <ng-template pTemplate="footer">
+                <p-button (click)="displayDialog=false" label="Ok" styleClass="p-button-text"></p-button>
+            </ng-template>
+    </p-dialog>
+</body>
+</html>

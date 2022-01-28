@@ -1,0 +1,131 @@
+html{
+    min-width: 1100px !important;
+    height: initial !important;
+    width: 100% !important;
+    padding: 0% !important;
+    margin: 0% !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;  
+}
+
+body{
+    width: 100% !important;
+    margin: 0% !important;
+    padding-top: 0% !important;
+    padding-right: 0% !important;
+    padding-left: 0% !important;
+    padding-bottom: 1% !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;  
+}
+
+.product-list-item{
+    width:100%;
+}
+
+#listProduct{
+    width: 95%!important;
+    margin-left: 3%;
+}
+
+#divZero{
+    height:10% !important;
+    width:25% !important;
+    margin-top: 10px !important;
+    margin-left: 4%;
+    justify-content: center;
+    display: flex;
+}
+
+#divUno{
+    width: 50%;
+    padding-left: 5%;
+    padding-top: 1.2%;
+}
+
+#divDue{
+    width: 20%;
+    padding-top: 1.2%;
+    padding-right: 7%;
+    text-align: right;
+}
+
+#laRiga{
+    width:100%!important;
+}
+
+#quantityDiv{
+    position: relative;
+    left: 4%;
+}
+
+#divCard{
+    width:20%!important;
+    margin-top: 0.8%;
+    
+}
+
+#divFor{
+    width:73%!important;
+}
+
+#imgPrd{
+    position: relative;
+    cursor: pointer;
+    height: 190px;
+    margin-top: 20px;
+    height:190px !important;
+    width: auto !important;
+}
+
+.divBottoneRimuovi{
+    width:5%;
+}
+
+#listProduct{
+    border: 1px solid var(--surface-d);
+    width: 80%;
+    margin-top: 1%;
+    height: 240px;
+    padding-left: 2%;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    border-color: grey;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.font-weight-bold{
+    width: 30%;
+}
+
+.product-price-sconto{
+    font-size: x-large;
+    color: red;
+    text-decoration-color: red;
+    text-align: right;
+}
+
+.product-name{
+    cursor: pointer;
+}
+
+#mainDiv{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+@media screen and (max-width: 1400px){
+    #divZero{
+        width: 220px !important;
+    }
+    #divDue{
+        width: 120px !important;
+    }
+    #nomeProdotto{
+        text-overflow: ellipsis !important;
+        white-space: nowrap;
+        overflow : hidden;
+    }
+}

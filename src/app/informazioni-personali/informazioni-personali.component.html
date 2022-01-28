@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Techzon</title>
+</head>
+<body>
+    <div class="row" id="conteiner">
+        <div id="divSinistraImmaginiLato">
+            <a href="https://ibb.co/vBRjLxC">
+                <img src="https://i.ibb.co/xsd7zSK/tech-icon-png-3-2.png" alt="tech-icon-png-3-2" border="0" width="100%" height="20%">
+            </a>
+            <a href="https://ibb.co/NLZv56Y">
+                <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+            </a>
+            <a href="https://ibb.co/TRk1xRQ">
+                <img src="https://i.ibb.co/pZxQBZH/picture.png" alt="picture" border="0" width="100%" height="20%">
+            </a>
+            <a href="https://ibb.co/NLZv56Y">
+                <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+            </a>
+            <a href="https://ibb.co/NLZv56Y">
+                <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+            </a>
+            <a href="https://ibb.co/G9Nxky0">
+                <img src="https://i.ibb.co/m0gDtkG/world2.png" alt="world2" border="0" width="100%" height="20%">
+            </a>
+            <a href="https://ibb.co/NLZv56Y">
+                <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+            </a>
+            <a href="https://ibb.co/NLZv56Y">
+                <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+            </a>
+            <a href="https://ibb.co/hWJnn5Y">
+                <img src="https://i.ibb.co/wWFbbHc/Daco-222378.png" alt="Daco-222378" border="0" width="100%" height="15%">
+            </a>
+            <a href="https://ibb.co/NLZv56Y">
+                <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+            </a>
+            <a href="https://ibb.co/NLZv56Y">
+                <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+            </a>
+            <a href="https://ibb.co/FH4KzZk">
+                <img src="https://i.ibb.co/TWMktjD/picture-PIC.png" alt="picture-PIC" border="0" width="100%" height="23%">
+            </a>
+            <a href="https://ibb.co/NLZv56Y">
+                <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+            </a>
+            <a id="secondPic" href="https://ibb.co/DCgmgkH">
+                <img src="https://i.ibb.co/2tYRYP1/tech-icon-png-3-1.png" alt="tech-icon-png-3-1" border="0" width="100%" height="20%">
+            </a>
+        </div>
+        <div id="divCentrale">
+            <div class="row" id="rigaSaldo">
+                <div id="saldo">
+                    <div class="row justify-content-center" id="rigaResocontoSaldo">
+                        <h3>Resoconto del tuo saldo</h3>
+                    </div>
+                    <div class="row justify-content-center" id="descrizioneSaldoRiga">
+                        <div id="descrizioneSaldo">
+                            Descrizione saldo
+                        </div>
+                        <p-knob [size]="150"  [(ngModel)]="saldoUtente" [readonly]="true" [min]="0" [max]="50000"></p-knob>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="row justify-content-center" id="resocontoPuntiRiga">
+                        <h3>Resoconto dei tuoi punti</h3>
+                    </div>
+                    <div class="row justify-content-center" id="descrizionePuntiRiga">
+                        <div id="descrizionePunti">
+                            Descrizione punti
+                        </div>
+                        <p-knob [size]="150" [(ngModel)]="utente.punti" [readonly]="true" [min]="0" [max]="1000"></p-knob>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="row justify-content-center" id="rigaRicaricaConto">
+                        <h3>Ricarica il tuo conto!</h3>
+                    </div>
+                    <br>
+                    
+                        <ng-template pTemplate = "header">
+                            <i class="pi pi-credit-card"></i><span>&nbsp; Paga con carta</span>
+                        </ng-template>
+                        <ng-container *ngIf="carte.length>0; then mostraCarte else mostraScritta"></ng-container>
+                        <ng-template #mostraCarte>
+                            
+                            <h4 style="text-align: center;"><strong>Le tue carte di credito</strong></h4>
+                            <br>
+                            <br>
+                            <div class="row" id="label">
+                                <div id="primoPar">
+
+                                </div>
+                                <div id="secondoPar">
+                                    <label><strong>Tipologia carta</strong></label>
+                                </div>
+                                <div id="terzoPar">
+                                    <label><strong>Numero carta</strong></label>
+                                </div>
+                                <div id="quartoPar">
+                                    <label><strong>Titolare</strong></label>
+                                </div>
+                                <div id="quintoPar">
+                                    <label><strong>Scadenza</strong></label>
+                                </div>
+                                <div id="sestoPar">
+                                    <label><strong>Operazioni</strong></label>
+                                </div>
+                            </div>
+                            <hr>
+                            
+                            <div *ngFor="let carta of carte">
+                                <div class="row" id="parametri">
+                                    <div id="primoPar">
+                                        <p-radioButton (click)="scegliCarta() "[style]="{'left': '15px'}" [value]="carta" [(ngModel)]="cartaSelezionata"></p-radioButton>
+                                    </div>
+                                    <div id="secondoPar">
+                                        <div *ngIf="carta.tipologia==='Maestro';then maestro"></div>
+                                        <ng-template #maestro>
+                                            <img src="https://i.ibb.co/RYxQ7Hm/maestro.png" id="imgCarta" alt="maestro" border="0">
+                                        </ng-template>
+
+                                        <div *ngIf="carta.tipologia==='Mastercard';then mastercard"></div>
+                                        <ng-template #mastercard>
+                                            <img src="https://i.ibb.co/BLSKR0d/master.png" id="imgCarta" alt="master" border="0">
+                                        </ng-template>
+
+                                        <div *ngIf="carta.tipologia==='American Express';then american"></div>
+                                        <ng-template #american>
+                                            <img src="https://i.ibb.co/SmpjzxF/american.png" id="imgCarta" alt="american" border="0">
+                                        </ng-template>
+
+                                        <div *ngIf="carta.tipologia==='Visa';then visa"></div>
+                                        <ng-template #visa>
+                                            <img src="https://i.ibb.co/MBvFJ51/visa.png" id="imgCarta" alt="visa" border="0">
+                                        </ng-template>
+
+                                    </div>
+                                    <div id="terzoPar">
+                                        <label><strong>{{carta.tipologia}}</strong> termina con {{carta.numeroCarta.substring(12,16)}}</label>
+                                    </div>
+                                    <div id="quartoPar">
+                                        <label id="second">{{carta.titolare}}</label>
+                                    </div>
+                                    <div id="quintoPar">
+                                        <label id="third">{{carta.meseScadenza}}/{{carta.annoScadenza}}</label>
+                                    </div>
+                                    <div id="sestoPar">
+                                        <button pButton pRipple type="button" [style]="{'width': '80px', 'height': '30px', 'display': 'flex', 'justify-content': 'center'}" (click)="cancellaCarta(carta.id)" class="p-button-rounded p-button-danger">Elimina</button>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </ng-template>
+                        <ng-template #mostraScritta>
+                            <div class="centerLabel">
+                                <h5>Nessuna carta inserita</h5>
+                                <br>
+                            </div>
+                        </ng-template>
+                        <div class="row" style="justify-content: space-around;">
+                            <p-button (click)="showModalCartaDialog()" icon="pi pi-plus" label="Aggiungi una nuova carta"></p-button>
+                            <p-button (click)="showModalRicaricaDialog()" icon="pi pi-euro" label="Effettua ricarica"></p-button>
+                            
+                            <p-dialog [(visible)]="displayModalRicarica" [modal]="true" [style]="{width: '30vw', 'height': '250px'}" [draggable]="false" [resizable]="false">
+                                <p><strong>Inserisci un importo</strong></p>
+                                <input type="text" [(ngModel)]="importoRicarica" [style]="{height:'30px',width:'60px'}" pInputText />
+                                <ng-template pTemplate="footer">
+                                    <p-button (click)="effettuaRicarica()" [style]="{'width': '20px', 'height': '10px', 'display': 'flex', 'justify-content': 'center', 'margin-top':'5px'}">OK</p-button>
+                                </ng-template>   
+                            </p-dialog>
+
+                        </div>
+                        <p-dialog header="Compila i campi" [(visible)]="displayModalCarta" [modal]="true" [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+                            <div class="row divRiga">
+                                <div class="labelDiv">
+                                    <p class="labelPar">Numero di carta</p>
+                                    <input type="text" [(ngModel)]="numeroCartaSelezionato" placeholder="5333-XXXX-XXXX-XXXX" [style]="{height:'45px',width:'250px'}" pInputText/>
+                                </div>
+                                <div class="labelDiv">
+                                    <p class="labelPar">Titolare (nome e cognome)</p>
+                                    <input type="text" [(ngModel)]="titolareSelezionato" placeholder="Mario Rossi" [style]="{height:'45px',width:'250px'}" pInputText/>
+                                </div>
+                            </div>
+                            <div class="row divRiga">
+                                <div class="labelDiv">
+                                    <p class="labelPar">CVV</p>
+                                    <input type="text" [(ngModel)]="cvvSelezionato" placeholder="000" [style]="{height:'45px',width:'250px'}" pInputText/>
+                                </div>
+                                <div class="labelDiv"> 
+                                    <div class="labelDiv">
+                                        <p class="labelPar">Tipologia</p>
+                                        <p-dropdown id="ciao" appendTo="body" [options]="tipiCarta" [(ngModel)]="tipoSelezionato" [style]="{height:'45px',width:'250px'}"></p-dropdown>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row divRiga">
+                                <div class="labelDiv">
+                                    <p class="labelPar">Data di scadenza</p>
+                                    <p-dropdown appendTo="body" [options]="mesi" [(ngModel)]="meseSelezionato" [style]="{height:'45px',width:'100px'}"></p-dropdown>
+                                    <p-dropdown appendTo="body" [options]="anni" [(ngModel)]="annoSelezionato" [style]="{height:'45px',width:'120px'}"></p-dropdown>
+                                </div>
+                            </div>
+                            <ng-template pTemplate="footer">
+                                <p-button icon="pi pi-check" (click)="aggiungiCarta()" label="Aggiungi"></p-button>
+                            </ng-template>
+                        </p-dialog>
+                    
+                </div>
+                <div id="divInfoPersonali">
+                    <div class="row justify-content-center" id="rigaFoto">
+                        <div id="divCambiaFoto">
+                            <div class="row justify-content-center" id="divFoto">
+                                <div id="spazioCentraFoto"></div>
+                                <div id="fotoUser">
+                                    <img id="imgCaricamento" [src]="imgSrc" (click)="fileUploader.click()">
+                                </div>
+                                <div id="spazioCentraFoto"></div>
+                            </div>
+                            
+                            <div class="row form-group justify-content-center" id="fileChooser">
+                                <label id="selezionaImg">Aggiorna la foto del tuo account da qui</label>
+                                <input type="file" accept="image/*" (change)="cambiaFoto()" class="form-control" #fileUploader (change)="showPreview($event)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <h4>Dati personali:</h4>
+                    </div>
+                    <hr>
+                    <div class="row form-group justify-content-center" id="divCampo">
+                        <div id="riferimentoCampo">
+                            <strong>Nome:</strong>
+                        </div>
+                        <div id="inserisciCampo">
+                            <span class="p-float-label">
+                                <input id="float-input" type="text" [(ngModel)]="utente.nome" pInputText [style]="{'border-radius': '0px'}">
+                            </span> 
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row form-group justify-content-center" id="divCampo">
+                        <div id="riferimentoCampo">
+                            <strong>Cognome:</strong>
+                        </div>
+                        <div id="inserisciCampo">
+                            <span class="p-float-label">
+                                <input id="float-input" type="text" [(ngModel)]="utente.cognome" pInputText [style]="{'border-radius': '0px'}">
+                            </span> 
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row form-group justify-content-center" id="divCampo">
+                        <div id="riferimentoCampo">
+                            <strong>Email:</strong>
+                        </div>
+                        <div id="inserisciCampo">
+                            <span class="p-float-label">
+                                <input id="float-input" type="text" [(ngModel)]="utente.email" pInputText [style]="{'border-radius': '0px'}">
+                            </span> 
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row form-group justify-content-center" id="divCampo">
+                        <div id="riferimentoCampo">
+                            <strong>Num. Tel:</strong>
+                        </div>
+                        <div id="inserisciCampo">
+                            <span class="p-float-label">
+                                <input id="float-input" type="text" [(ngModel)]="utente.telefono" pInputText [style]="{'border-radius': '0px'}">
+                            </span> 
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row form-group justify-content-center" id="divBottoneDatiPersonali">
+                        <p-button  (click)="onSubmitImage()" label="Modifica dati personali" icon="pi pi-pencil" iconPos="right" [style]="{height: '35px'}"></p-button>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <h4>Dati accesso:</h4>
+                    </div>
+                    <hr>
+                    <div class="row form-group justify-content-center" id="divCampo">
+                        <div id="riferimentoCampo">
+                            <strong>Username:</strong>
+                        </div>
+                        <div id="inserisciCampo">
+                            <span class="p-float-label">
+                                <input id="float-input" type="text" [(ngModel)]="utente.username" pInputText [style]="{'border-radius': '0px'}">
+                            </span> 
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row form-group justify-content-center" id="bottoneDatiPersonali">
+                        <p-button label="Modifica password" icon="pi pi-pencil" (click)="apriModaleModificaPassword = true" iconPos="right" [style]="{height: '35px'}"></p-button>
+                        <p-dialog header="Modifica Password" [(visible)]="apriModaleModificaPassword" [modal]="true" [style]="{width: '10vw', height: '450px', 'min-width':'500px'}">
+                            <div [style]="{'text-align': 'center', 'margin-left': 'auto', 'margin-right': 'auto'}">
+                                <div class="centerLabel" >
+                                    <h6>Inserisci la password attuale</h6>
+                                    <input id="float-input" type="password" [(ngModel)]="passwordAttuale" pInputText [style]="{'border-radius': '0px'}">
+                                </div>
+                                <br>
+                                <div class="centerLabel">
+                                    <h6>Inserisci la nuova password</h6>
+                                    <input id="float-input" type="password" [(ngModel)]="nuovaPassword" pInputText [style]="{'border-radius': '0px'}">
+                                </div>
+                                <br>
+                                <div class="centerLabel" >
+                                    <h6>Conferma nuova password</h6>
+                                    <input id="float-input" type="password" [(ngModel)]="confermaNuovaPassword" pInputText [style]="{'border-radius': '0px'}">
+                                </div>
+                            </div>
+                            <ng-template pTemplate="footer">
+                                <div class="row justify-content-center">
+                                    <p-button icon="pi pi-check" (click)="modificaPassword()" label="Conferma" styleClass="p-button-text"></p-button>
+                                    <!--<p-button icon="pi pi-times" (click)="chiudiModaleEliminaNo()" label="Annulla" styleClass="p-button-text"></p-button>-->
+                                </div>
+                            </ng-template>
+                        </p-dialog>
+                    </div>
+                    <br>
+                   
+                    <br>
+                    <div class="row form-group justify-content-end" id="bottoneDatiPersonali">
+                        <button pButton pRipple label="Elimina user" (click)="apriModaleElimina()" class="p-button-raised p-button-danger" icon="pi pi-trash" iconPos="right" [style]="{height: '35px', 'margin-left': '-1px'}"></button>
+                        <p-dialog header="Conferma cancellazione account" id="modal" [(visible)]="apriModaleEliminaBooleana" [style]="{width: '10vw', height: '250px', 'min-width':'500px'}">
+                            <div class="row justify-content-start" id="rigaInModale">
+                                <h5>Sei sicuro di voler cancellare il tuo account?</h5>
+                            </div>
+                            <div class="row justify-content-start" id="rigaInModale">
+                                <h6>Se prosegui tutti i dati assocciati a questo account verranno cancellati</h6>
+                            </div>
+                            <ng-template pTemplate="footer">
+                                <div class="row justify-content-center" id="rigaInModale">
+                                    <p-button icon="pi pi-check" (click)="chiudiModaleEliminaSi()" label="Cancella" styleClass="p-button-text" ></p-button>
+                                    <p-button icon="pi pi-times" (click)="chiudiModaleEliminaNo()" label="Annulla" styleClass="p-button-text"></p-button>
+                                </div>
+                            </ng-template>
+                        </p-dialog>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divDestraImmaginiLato">
+            <a href="https://ibb.co/GHFGY78">
+                <img src="https://i.ibb.co/vXDfy1T/handphone2.png" alt="handphone2" border="0" width="100%" height="55%">
+            </a>
+            <a href="https://ibb.co/2NfqMyG">
+                <img src="https://i.ibb.co/NSHxNsc/pngwing-com.png" alt="pngwing-com" border="0" width="100%" height="20%">
+            </a>
+            <a href="https://ibb.co/68V6TV1">
+                <img src="https://i.ibb.co/QkzsTzC/buildings.png" alt="buildings" border="0" width="100%" height="65%">
+            </a>
+        </div>
+    </div>
+    <p-dialog [(visible)]="displayDialog" header="Avviso" [modal]="true" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+        <p><strong>{{avviso}}</strong></p>
+            <ng-template pTemplate="footer">
+                <p-button (click)="displayDialog=false" label="Ok" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-dialog>
+</body>

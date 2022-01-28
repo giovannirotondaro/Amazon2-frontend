@@ -1,0 +1,52 @@
+body {
+    padding-top: 40px !important;
+    padding-left: 100px !important;
+    padding-right: 100px !important;
+    padding-bottom: 100px !important;
+}
+
+#acquistaBtn {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#contenuto {
+    width: 100%;
+}
+
+#imgOffer {
+    display: block;
+    margin: 0 auto;
+}
+
+#rating {
+    margin-top: 20px;
+    background-color: aqua;
+}
+
+#radio {
+    width: 80%;
+    height: 200px;
+}
+
+#imgSegnala {
+    width: 20%;
+    height: 200px;
+}
+
+#sinistraRadio {
+    width: 40%;
+    height: 50px;
+    text-align: end;
+}
+
+#destraRadio {
+    width: 60%;
+    height: 50px;
+    text-align: start;
+}
+
+#rigaRadio {
+    margin: 0%;
+    height: 30px;
+}

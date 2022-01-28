@@ -1,0 +1,6 @@
+<app-navbar *ngIf="route !== '/carrello/riepilogo' && route !== '/carrello/riepilogo/ordine'"></app-navbar>
+<router-outlet></router-outlet>
+<app-footer *ngIf="route !== '/carrello' && route !== '/carrello/riepilogo' && route !== '/carrello/riepilogo/ordine' && route !== '/prodottiVenditore'
+ && route !== '/preferiti' && route !== '/Accessori' && route !== '/Computer' && route !== '/Smartphone' && route !== '/Tablet' 
+ && !route.startsWith('/ricerca') && route !== '/premi' && route !== '/cronologia' && route !== '/cronologiaResi' 
+ && route !== '/areaPersonale'"></app-footer>

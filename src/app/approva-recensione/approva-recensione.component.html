@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Techzon</title>
+</head>
+<body>
+	<div class="principale">
+		<div class="row" id="reg">
+			<div id="divImmaginiLatoSinistro">
+				<a href="https://ibb.co/vBRjLxC">
+					<img src="https://i.ibb.co/xsd7zSK/tech-icon-png-3-2.png" alt="tech-icon-png-3-2" border="0" width="100%" height="20%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/TRk1xRQ">
+					<img src="https://i.ibb.co/pZxQBZH/picture.png" alt="picture" border="0" width="100%" height="20%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/G9Nxky0">
+					<img src="https://i.ibb.co/m0gDtkG/world2.png" alt="world2" border="0" width="100%" height="20%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/hWJnn5Y">
+					<img src="https://i.ibb.co/wWFbbHc/Daco-222378.png" alt="Daco-222378" border="0" width="100%" height="15%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/FH4KzZk">
+					<img src="https://i.ibb.co/TWMktjD/picture-PIC.png" alt="picture-PIC" border="0" width="100%" height="23%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a id="ultimaImmagineLatoSinistro" href="https://ibb.co/DCgmgkH">
+					<img src="https://i.ibb.co/2tYRYP1/tech-icon-png-3-1.png" alt="tech-icon-png-3-1" border="0" width="100%" height="20%">
+				</a>
+			</div>
+			<div id="divParteCentrale">
+				<br>
+				<div class="row justify-content-center">
+					<h3>Gestione Admin</h3>
+				</div>
+				<br>
+				<div class="row justify-content-center">
+					<p-menubar [model]="items" [style]="{'width':'100%'}">
+						<ng-template pTemplate="start">
+							<img src="https://i.ibb.co/HCQnw0d/admin.png" height="40" class="p-mr-2">
+						</ng-template>
+					</p-menubar>
+					<p-button badge="{{listaRichieste.length}}" label="&nbsp;&nbsp;Richieste corrieri" [style]="{'height': '55px', 'top': '2px', 'margin-left': '15px'}" [routerLink]="['/richiesteCorrieri']" badgeClass="p-badge-danger"><i class="pi pi-envelope"></i></p-button>
+				</div>
+				<div class="row justify-content-center" id="rigaContieneTutteRecensioni">
+					<div id="divContenutoRecensioni">
+						<p-orderList [value]="listaRecensioniDaApprovare" [listStyle]="{'height':'600px'}" header="Lista delle recensioni degli utenti da approvare dall'admin.">
+							<ng-template let-recensione pTemplate="item">
+								<div class="row">
+									<div id="parteSinistraSingolaRecensione"></div>
+									<div id="parteCentraleSingolaRecensione">
+										<div>
+											<div class="recensione ">
+												<div class="row ">
+													<div class="col-md-6 mb-4 mb-md-0 ">
+														<h6>Recensione effettuata da: <strong>{{recensione.creataDa.nome}}&nbsp;{{recensione.creataDa.cognome}}</strong></h6>
+														<br>
+														<h6>Recensione effettuata in data: <strong>{{recensione.dataAggiunta| date: 'dd-MM-yyyy'}} </strong> </h6>
+														<br>
+														<h6>Recensione su:</h6>
+														<strong>{{recensione.prodottoRecensito.titolo}} </strong> 
+													</div>
+													<div class="col-md-6 mb-4 mb-md-0 ">
+														<p-rating [iconOnStyle]="{'color':'#ffab18'}" [(ngModel)]="recensione.rating" [readonly]="true"  [cancel]="false"></p-rating>
+													</div>
+												</div>
+												<div class="md-form md-outline ">
+													<textarea type="text" [(ngModel)]="recensione.recensione" class="form-control " id="recensione " name="recensione " [style]="{width: '80%', height: '150px'}"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div id="parteDestraSingolaRecensione">
+										<br>
+										<br>
+										<br>
+										<br>
+										<div class="row justify-content-center" id="rigaBottoneApprovaRecensione">
+											<div id="divApprovaRecensione">
+												<button  pButton pRipple type="button" label="Approva" (click)="approvaRecensione(recensione)" icon="pi pi-pencil" iconPos="right" class="p-button-rounded p-button-success" [style]="{'width':'150px','height':'30px'}"></button>
+											</div>
+										</div>
+										<div class="row justify-content-center" id="rigaBottoneNonApprovaRecensione">
+											<div id="divNonApprovaRecensione">
+												<button  pButton pRipple type="button" label="Disapprova" (click)="nonApprovaRecensione(recensione)"  icon="pi pi-exclamation-triangle" iconPos="right" class="p-button-rounded p-button-danger" [style]="{'width':'150px','height':'30px'}"></button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</ng-template>
+						</p-orderList>
+					</div>
+				</div>
+			</div>
+			<div id="divImmaginiLatoDestro">
+				<a href="https://ibb.co/GHFGY78">
+					<img src="https://i.ibb.co/vXDfy1T/handphone2.png" alt="handphone2" border="0" width="100%" height="65%">
+				</a>
+				<a href="https://ibb.co/2NfqMyG">
+					<img src="https://i.ibb.co/NSHxNsc/pngwing-com.png" alt="pngwing-com" border="0" width="100%" height="20%">
+				</a>
+				<a href="https://ibb.co/68V6TV1">
+					<img src="https://i.ibb.co/QkzsTzC/buildings.png" alt="buildings" border="0" width="100%" height="65%">
+				</a>
+			</div>
+		</div>
+	</div> 
+</body>
+</html>

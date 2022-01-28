@@ -1,0 +1,250 @@
+html {
+    min-width: 1100px !important;
+    width: 100% !important;
+    padding: 0% !important;
+    margin: 0% !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: gainsboro;
+}
+
+body {
+    width: 100% !important;
+    height: 1100px;
+    padding: 0% !important;
+    margin: 0% !important;
+    background-color: gainsboro;
+}
+
+#imgLatoSinistro {
+    margin-left: 1.5% !important;
+}
+
+
+#divImgSinistro {
+    width: 10%;
+    height: 800px;
+}
+
+#divImgDestro {
+    width: 10%;
+    height: 800px;
+}
+
+#parteCentrale {
+    width: 80%;
+    height: 1700px;
+    background-color: gainsboro;
+}
+
+
+#divTitolo {
+    width: 29%;
+    margin-left: 2%!important;
+}
+
+#divCategorie {
+    width: 25%;
+}
+
+#divColore {
+    width: 25%;
+    margin-left: 2% !important;
+}
+
+#imgCaricamento {
+    width: 120px;
+    height: 100px;
+}
+
+#titolo {
+    height: 45px;
+}
+
+#categoria {
+    height: 45px;
+}
+
+#colore {
+    height: 45px;
+}
+
+#prezzo {
+    height: 45px;
+}
+
+#quantita {
+    height: 45px;
+}
+
+#divMarca {
+    width: 50%;
+    margin-left: 2%!important;
+}
+
+#divAltezza {
+    width: 20%;
+}
+
+#divPeso {
+    width: 20%;
+    margin-left: 2%!important;
+}
+
+#divPrezzo {
+    width: 29%;
+    margin-left: 2%;
+}
+
+#divQuantita {
+    width: 25%;
+}
+
+#divSconto {
+    width: 25%;
+    margin-left: 2% !important;
+}
+
+#divTextAreaAnteprima {
+    width: 29%;
+    height: 70px;
+    margin-left: 2% !important;
+}
+
+#divTextAreaDescrizione {
+    width: 47%;
+    height: 70px;
+}
+
+
+#logoImgVendita {
+    width: 90%;
+    height: 140px;
+}
+
+#divFoto {
+    width: 33%;
+}
+
+#spazioLogoImgVenditaSinistro {
+    width: 35%;
+}
+
+#spazioLogoImgVenditaDestro{
+    width: 30%;
+}
+
+#selezionaImgProdotto {
+    margin-left: 2% !important;
+}
+
+#imgRiquadro {
+    margin-left: 2%;
+}
+
+#primaImmagineProdotto {
+    width: 42%;
+    height: 200px;
+    margin-right: 2%;
+    border-style: solid;
+    border-color: #CCCCCC;
+    border-width: 1px;
+}
+
+#secondaImmagineProdotto {
+    width: 38%;
+    height: 200px;
+    border-style: solid;
+    border-color: #CCCCCC;
+    border-width: 1px;
+}
+
+#terzaImmagineProdotto {
+    width: 42%;
+    height: 200px;
+    border-style: solid;
+    margin-right: 2%;
+    border-color: #CCCCCC;
+    border-width: 1px;
+}
+
+#quartaImmagineProdotto {
+    width: 38%;
+    height: 200px;
+    border-style: solid;
+    border-color: #CCCCCC;
+    border-width: 1px;
+}
+
+#divMemoriaRam {
+    width: 25%;
+}
+
+#divMemoriaArc {
+    width: 25%;
+    margin-left: 2%!important;
+}
+
+#divModello {
+    width: 48%;
+    margin-left: 2% !important;
+}
+
+#divLarghezza {
+    width: 20%;
+}
+
+#divAltezzaDescrizione {
+    height: 300px;
+}
+
+#contenitore1 {
+    margin-left: 15%;
+}
+
+#contenitore2 {
+    margin-left: 15%;
+}
+
+#contenitore3 {
+    margin-left: 25%;
+}
+
+#bottoneAvanti1 {
+    margin-left: 2%;
+}
+
+#bottoneAvanti2 {
+    margin-left: 2%;
+}
+
+#bottoneAvanti3 {
+    margin-left: 2%;
+}
+
+#rigaInModale {
+    margin: 0%;
+}
+
+#sinistraModale {
+    height: 70px;
+    width: 70%;
+}
+
+#destraModale {
+    height: 70px;
+    width: 30%;
+}
+
+#rigaLoginSbagliato {
+    margin: 0;
+}
+
+#iconModale {
+    color: red;
+}
+
+::ng-deep .spinDialog{
+    height: 150px;
+    box-shadow: none;
+  }

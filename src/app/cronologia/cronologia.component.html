@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>Techzon</title>
+    </head>
+    <body>
+        <br>
+        <div class="row justify-content-center">
+            <h2>Cronologia acquisti</h2>
+        </div>
+        <p-table [value]="prodottiAcquistati" responsiveLayout="scroll" [scrollable]="true" scrollHeight="600px" [style]="{padding: '3%',height: '600px'}">
+            <ng-template pTemplate="caption">
+                <div class="row justify-content-center">
+                    Nella seguente tabella è possibile visualizzare i prodotti acquistati, consultare lo stato della loro spedizione, e utilizzare l'opzione di reso.
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" style="z-index: 99000; position:relative;">
+                <tr style="z-index: 0; position:relative;">
+                    <th>Titolo</th>
+                    <th>Immagine</th>
+                    <th>Prezzo</th>
+                    <th>Categoria</th>
+                    <th>Descrizione breve</th>
+                    <th>Disponibilità</th>
+                    <th>Venduto da</th>
+                    <th>Opzioni</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-acquisto>
+                <tr>
+                    <td>{{acquisto.prodotto.titolo}}</td>
+                    <td><img [src]="acquisto.prodotto.url1" [alt]="acquisto.name" width="100" class="p-shadow-4" /></td>
+                    <td>{{acquisto.prodotto.prezzo | currency:'EUR'}}</td>
+                    <td>{{acquisto.prodotto.categoria}}</td>
+                    <td>{{acquisto.prodotto.anteprima}}</td>
+                    <td>
+                        <span *ngIf="acquisto.prodotto.disponibile; then thenBlock else elseBlock"></span>
+                        <ng-template #thenBlock> <p-chip label="DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'darkgreen', background: 'yellowgreen'}"></p-chip></ng-template>
+                        <ng-template #elseBlock> <p-chip label="NON DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'black', background: 'salmon'}"></p-chip></ng-template>
+                    </td>
+                    <td>{{acquisto.prodotto.vendutoDa.nome}} {{acquisto.prodotto.vendutoDa.cognome}}</td>
+                    <td>
+                        <div class="row">
+                            <div *ngIf="acquisto.stato==='CONSEGNATO';then resoSi else resoNo"></div>
+                            <ng-template #resoSi>
+                                <button pButton pRipple (click)="controllaReso(acquisto)" [style]="{width: '170px', height: '30px' , 'margin-bottom': '5px'}" icon="pi pi-box" type="button" label="Reso" class="p-button-info"></button>
+                            </ng-template>
+                            <ng-template #resoNo>
+                                <button pButton pRipple disabled="true" [style]="{width: '170px', height: '30px' , 'margin-bottom': '5px'}" icon="pi pi-box" type="button" label="Reso" class="p-button-info"></button>
+                            </ng-template>
+                            <br>
+                            <button pButton pRipple [style]="{width: '170px', height: '30px' , 'margin-bottom': '5px'}" (click)="apriModaleSpedizione(acquisto.stato)" icon="pi pi-car" type="button" label="Spedizione" class="p-button-warning"></button>
+                            <br>
+                            <button pButton pRipple [style]="{width: '170px', height: '30px' , 'margin-bottom': '5px'}" (click)="apriModaleAnnulla(acquisto)" icon="pi pi-times-circle" type="button" label="Annulla" class="p-button-danger"></button>
+                        </div>
+                        <br>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    In totale ci sono {{prodottiAcquistati ? prodottiAcquistati.length : 0 }} acquisti.
+                </div>
+            </ng-template>
+        </p-table>
+
+        <p-dialog header="Reso già effettuato" [(visible)]="isPresenteReso" [modal]="true" [style]="{width: '10vw', height: '250px', 'min-width':'500px'}">
+            <img src="https://image.flaticon.com/icons/png/512/1041/1041908.png" [style]="{width: '60px', padding:'10px'}">
+            <br>
+            <div *ngIf="'reso.rimborsato';then si else no"></div>
+            <ng-template #si>
+                <h5><strong>Stato rimborso: {{avviso}}</strong></h5>
+            </ng-template>
+            <ng-template #no>
+                <h5><strong>Stato rimborso: {{avviso}}</strong></h5>
+            </ng-template>
+            <p></p>
+        </p-dialog>
+    </body>
+
+    <p-dialog header="Monitoraggio spedizione" id="modal" [(visible)]="apriModaleSpedizioneBooleana" [style]="{width: '40vw', height: '450px', 'min-width':'750px'}">
+        
+        <div class="row" id="rigaSpedizione">
+            <div id="descrizioneStatoSpedizione">
+                (L'ordine è stato <br> preparato per essere spedito)
+            </div>
+            <div *ngIf="ricorda==='CONSEGNATO' || ricorda==='IN_CONSEGNA' || ricorda==='PRESO_IN_CARICO';then content else other_content"></div>
+            <ng-template #content>
+                <div id="centroSpedizione"  [style]="{background: 'green'}"></div>
+            </ng-template>
+            <ng-template #other_content>
+                <div id="centroSpedizione" [style]="{background: 'rgb(194, 194, 194)'}"></div>
+            </ng-template>
+            <div id="statoAttualeSpedizione">
+                <strong>PRESO IN CARICO</strong>
+            </div>
+        </div>
+
+        <div class="row" id="rigaSpedizione">
+            <div id="rigaVerticaleSinistra"></div>
+            <div id="rigaVerticaleDestra"></div>
+        </div>
+
+        <div class="row" id="rigaSpedizione">
+            <div id="descrizioneStatoSpedizione">
+                (L'ordine potrebbe essere consegnato <br>in giornata)
+            </div>
+            <div *ngIf="ricorda==='CONSEGNATO' || ricorda==='IN_CONSEGNA';then content1 else other_content1">here is ignored</div>
+            <ng-template #content1>
+                <div id="centroSpedizione" [style]="{background: 'green'}"></div>
+            </ng-template>
+            <ng-template #other_content1>
+                <div id="centroSpedizione" [style]="{background: 'rgb(194, 194, 194)'}"></div>
+            </ng-template>
+            <div id="statoAttualeSpedizione">
+                <strong>IN CONSEGNA</strong>
+            </div>
+        </div>
+
+        <div class="row" id="rigaSpedizione">
+            <div id="rigaVerticaleSinistra"></div>
+            <div id="rigaVerticaleDestra"></div>
+        </div>
+
+        <div class="row" id="rigaSpedizione">
+            <div id="descrizioneStatoSpedizione">
+                (L'ordine è stato consegnato <br>al destinatario)
+            </div>
+            <div *ngIf="ricorda==='CONSEGNATO';then content2 else other_content2">here is ignored</div>
+            <ng-template #content2>
+                <div id="centroSpedizione" [style]="{background: 'green'}"></div>
+            </ng-template>
+            <ng-template #other_content2>
+                <div id="centroSpedizione" [style]="{background: 'rgb(194, 194, 194)'}"></div>
+            </ng-template>
+            <div id="statoAttualeSpedizione">
+                <strong>CONSEGNATO</strong>
+            </div>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <div class="row justify-content-center" id="rigaSpedizione">
+                <p-button icon="pi pi-check" (click)="apriModaleSpedizioneBooleana=false" label="Ok" styleClass="p-button-text"></p-button>
+            </div>
+        </ng-template>
+    </p-dialog>
+    
+    <p-dialog header="Conferma annullamento acquisto" id="modal" [(visible)]="apriModaleAnnullaBooleana" [style]="{width: '10vw', height: '250px', 'min-width':'500px'}">
+        <div class="row justify-content-start" id="rigaInModale">
+            <h5>Sei sicuro di voler annullare il tuo acquisto?</h5>
+        </div>
+        <div class="row justify-content-start" id="rigaInModale">
+            <h6>Se prosegui i tuoi soldi non ti saranno restituiti</h6>
+        </div>
+        <ng-template pTemplate="footer">
+            <div class="row justify-content-center" id="rigaSpedizione">
+                <p-button icon="pi pi-check" (click)="chiudiModaleAnnullaSi()" label="Annulla Ordine" styleClass="p-button-text"></p-button>
+                <p-button icon="pi pi-check" (click)="chiudiModaleAnnullaNo()" label="Esci" styleClass="p-button-text"></p-button>
+            </div>
+        </ng-template>
+    </p-dialog>
+</html>

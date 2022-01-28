@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>Techzon</title>
+    </head>
+    <body>
+        <div class="row" id="reg">
+            <div id="divImgParteSinistra">
+                <a href="https://ibb.co/vBRjLxC">
+                    <img src="https://i.ibb.co/xsd7zSK/tech-icon-png-3-2.png" alt="tech-icon-png-3-2" border="0" width="100%" height="20%">
+                </a>
+                <a href="https://ibb.co/NLZv56Y">
+                    <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+                </a>
+                <a href="https://ibb.co/TRk1xRQ">
+                    <img src="https://i.ibb.co/pZxQBZH/picture.png" alt="picture" border="0" width="100%" height="20%">
+                </a>
+                <a href="https://ibb.co/NLZv56Y">
+                    <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+                </a>
+                <a href="https://ibb.co/NLZv56Y">
+                    <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+                </a>
+                <a href="https://ibb.co/G9Nxky0">
+                    <img src="https://i.ibb.co/m0gDtkG/world2.png" alt="world2" border="0" width="100%" height="20%">
+                </a>
+                <a href="https://ibb.co/NLZv56Y">
+                    <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+                </a>
+                <a href="https://ibb.co/NLZv56Y">
+                    <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+                </a>
+                <a href="https://ibb.co/hWJnn5Y">
+                    <img src="https://i.ibb.co/wWFbbHc/Daco-222378.png" alt="Daco-222378" border="0" width="100%" height="15%">
+                </a>
+                <a href="https://ibb.co/NLZv56Y">
+                    <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+                </a>
+                <a href="https://ibb.co/NLZv56Y">
+                    <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+                </a>
+                <a href="https://ibb.co/FH4KzZk">
+                    <img src="https://i.ibb.co/TWMktjD/picture-PIC.png" alt="picture-PIC" border="0" width="100%" height="23%">
+                </a>
+                <a href="https://ibb.co/NLZv56Y">
+                    <img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+                </a>
+                <a id="imgLatoSinistro" href="https://ibb.co/DCgmgkH">
+                    <img src="https://i.ibb.co/2tYRYP1/tech-icon-png-3-1.png" alt="tech-icon-png-3-1" border="0" width="100%" height="20%">
+                </a>
+            </div>
+            <div id="parteCentrale">
+                <br>
+                <div class="row justify-content-center">
+                    <h3>Gestione Admin</h3>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <p-menubar [model]="items" [style]="{'width':'100%'}">
+                        <ng-template pTemplate="start">
+                            <img src="https://i.ibb.co/HCQnw0d/admin.png" height="40" class="p-mr-2">
+                        </ng-template>
+                    </p-menubar>
+                </div>
+                <br>
+                <br>
+                <div id="divPrincipale">
+                    <div id="subDivPrincipale">
+                        <div class="row justify-content-center">
+                            <h3>Modifica dati utente</h3>
+                        </div>
+                        <br>
+                        <div class="row justify-content-center">
+                            <img src="{{utente.immagineProfilo}}" class="user-image" id="imgUtente" />
+                        </div>
+                        <br>
+                        <div class="row justify-content-center">
+                            <button pButton pRipple type="button" (click)="eliminaFoto()" label="Elimina foto" class="p-button-raised p-button-danger p-button-text"></button>
+                        </div>
+                        <br>
+                        <div class="row justify-content-center">
+                            <div id="campoSinistra">
+                                <input type="text" [style]="{'width':'80%'}" [(ngModel)]="utente.nome" pInputText>
+                                <br>
+                                <small id="nome-help"><strong>Nome.</strong></small> 
+                            </div>
+                            <div id="campoCentrale">
+                                <input type="text" [style]="{'width':'80%'}" [(ngModel)]="utente.cognome" pInputText>
+                                <br>
+                                <small id="nome-help"><strong>Cognome.</strong></small> 
+                            </div>
+                            <div id="campoDestra">
+                                <input type="text" [disabled]=true [style]="{'width':'80%'}" [(ngModel)]="utente.username" pInputText>
+                                <br>
+                                <small id="nome-help"><strong>Username.</strong></small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row justify-content-center">
+                            <div id="campoSinistra">
+                                <input type="text" [disabled]=true [style]="{'width':'80%'}" [(ngModel)]="utente.email" pInputText>
+                                <br>
+                                <small id="nome-help"><strong>Email.</strong></small> 
+                            </div>
+                            <div id="campoCentrale">
+                                <input type="text" [style]="{'width':'80%'}" [(ngModel)]="utente.telefono" pInputText>
+                                <br>
+                                <small id="nome-help"><strong>Telefono.</strong></small> 
+                            </div>
+                            <div id="campoDestra">
+                                <input type="date" [style]="{'width':'80%'}" [(ngModel)]="utente.dataNascita"  pInputText>
+                                <br>
+                                <small id="nome-help"><strong>Data di nascita.</strong></small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row justify-content-center">
+                            <div id="campoSinistra"></div>
+                            <div id="campoCentrale">
+                                <p-selectButton [options]="stateOptions"  optionLabel="label" optionValue="value" [(ngModel)]="utente.genere" name="user.genere"></p-selectButton>
+                                <small id="genere-help"><strong>Scegli il sesso.</strong></small>
+                            </div>
+                            <div id="campoDestra"></div>
+                        </div>
+                        <br>
+                        <div class="row justify-content-center">
+                            <button pButton pRipple type="button" (click)="modificaUtente()" label="Modifica dati" class="p-button-raised p-button-success p-button-text"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divImgParteDestra">
+                <a href="https://ibb.co/GHFGY78">
+                    <img src="https://i.ibb.co/vXDfy1T/handphone2.png" alt="handphone2" border="0" width="100%" height="65%">
+                </a>
+                <a href="https://ibb.co/2NfqMyG">
+                    <img src="https://i.ibb.co/NSHxNsc/pngwing-com.png" alt="pngwing-com" border="0" width="100%" height="20%">
+                </a>
+                <a href="https://ibb.co/68V6TV1">
+                    <img src="https://i.ibb.co/QkzsTzC/buildings.png" alt="buildings" border="0" width="100%" height="65%">
+                </a>
+            </div>
+        </div>
+    </body>
+    <p-dialog [(visible)]="displayDialog" header="Avviso" [modal]="true" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+		<p><strong>Operazione effettuata con successo!</strong></p>
+			<ng-template pTemplate="footer">
+				<p-button (click)="chiudi()" label="Ok" styleClass="p-button-text"></p-button>
+			</ng-template>
+		</p-dialog>
+</html>

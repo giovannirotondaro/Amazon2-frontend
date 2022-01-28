@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	    <title>Techzon</title>
+    </head>
+    <body>
+        <div id="generale">
+            <br>
+            <br>
+            <br>
+            <div id="scrittaIniziale">
+                <h2>Benvenuto <strong>Giovanni <i class="pi pi-user" style="font-size: 1.5rem"></i></strong> nella tua area personale..</h2> 
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div id="divSpazioSinistra"></div>
+                <div id="divCentrale">
+                    <div class="row" id="rigaInterna">
+
+                        <div id="divCardInformazioni" [routerLink]="['/informazioniPersonali']" class="row">
+                            <div id="divParteSinistraImgCard">
+                                <br>
+                                    <img src="https://i.ibb.co/kGnYCt4/info.png" id="img1">
+                                <br>
+                            </div>
+                            <div id="divParteDestraCard">
+                                <br>
+                                <h5>Informazioni</h5>
+                                In quest'area puoi trovare tutte le informazioni relative al tuo profilo Techzon
+                            </div>
+                        </div>
+
+                        <div id="separatore"></div>
+
+                        <div id="divCardCronologia" [routerLink]="['/cronologia']" class="row">
+                            <div id="divParteSinistraImgCard">
+                                <br>
+                                    <img src="https://i.ibb.co/t8WLTvB/cronologia.png" id="img1">
+                                <br>
+                            </div>
+                            <div id="divParteDestraCard">
+                                <br>
+                                <h5>Cronologia</h5>
+                                In quest'area puoi trovare tutte le informazioni relative ai prodotti che hai acquistato
+                            </div>
+                        </div>
+
+                        <div id="separatore"></div>
+
+                        <div id="divCardResi" class="row" [routerLink]="['/cronologiaResi']">
+                            <div id="divParteSinistraImgCard">
+                                <br>
+                                    <img src="https://i.ibb.co/5jX7Gmq/reso.png" id="img1">
+                                <br>
+                            </div>
+                            <div id="divParteDestraCard">
+                                <br>
+                                 <h5>Resi vendite</h5>
+                                In quest'area puoi effettuare un reso o un rimborso di un tuo prodotto acquistato
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row" id="rigaInterna">
+                        <div id="divCardCaricaProdotto" [routerLink]="['/vendi']" class="row">
+                            <div id="divParteSinistraImgCard">
+                                <br>
+                                    <img src="https://i.ibb.co/GWMMFXH/add-item.png" id="img1">
+                                <br>
+                            </div>
+                            <div id="divParteDestraCard">
+                                <br>
+                                <h5>Carica prodotto</h5>
+                                Da quest'area puoi caricare su Techzon un nuovo prodotto.
+                            </div>
+                        </div>
+
+                        <div id="separatore"></div>
+
+                        <div id="divCardPremi" [routerLink]="['/premi']" class="row">
+                            <div id="divParteSinistraImgCard">
+                                <br>
+                                    <img src="https://i.ibb.co/QjyqQ7X/premi.png" id="img1">
+                                <br>
+                            </div>
+                            <div id="divParteDestraCard">
+                                <br>
+                                <h5>Premi</h5>
+                                In quest'area è possibile visualizzare i premi disponibili.
+                            </div>
+                        </div>
+
+                        <div id="separatore"></div>
+
+                        <div id="divCardPreferiti" [routerLink]="['/preferiti']" class="row">
+                            <div id="divParteSinistraImgCard">
+                                <br>
+                                    <img src="https://i.ibb.co/7rqV5Ps/Iper-Stella.png" id="img1">
+                                <br>
+                            </div>
+                            <div id="divParteDestraCard">
+                                <br>
+                                <h5>Preferiti</h5>
+                                Da questa pagina è possibile visualizzare i prodotti preferiti
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id="divSpazioDestra"></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Techzon</title>
+</head>
+<body>
+	<div id="navbar">
+		<div id="nuovoHeader" class="row">
+			<div id="primoBarra">
+				<a [routerLink]="['/']">
+			 	<img id="logoImg" src="https://i.ibb.co/TL2nDQY/tecno-Zone-logo.png">
+				</a>
+			</div>
+			<div id="secondoBarra">
+			 	<h3>Riepilogo carrello</h3>
+			</div>
+			<div id="terzoBarra">
+				
+			</div>
+		</div>
+	</div>
+    <div class="row" id="totale">
+		<div id="scelte">	
+			<p-accordion expandIcon="" collapseIcon="">
+				<p-accordionTab header="Indirizzo di consegna" (click)="notActive = true" [(selected)]="activeState[0]">
+					<ng-container *ngIf="existsInd; then tB else eB"></ng-container>
+					<ng-template #tB>
+						<h6><strong>Via: </strong>{{user.indirizzo.via}}</h6>
+						<h6><strong>Città: </strong>{{user.indirizzo.citta}}</h6>
+						<h6><strong>CAP: </strong>{{user.indirizzo.cap}}</h6>
+						<h6><strong>Provincia: </strong>{{user.indirizzo.provincia}}</h6>
+						<h6><strong>Regione: </strong>{{user.indirizzo.regione}}</h6>
+						<p-button (click)="showModalIndirizzoDialog()" icon="pi pi-external-link" label="Modifica l'indirizzo di spedizione"></p-button>
+				    </ng-template>
+					<ng-template #eB>
+						<h6><strong>Aggiungi un indirizzo</strong></h6>
+						<p-button (click)="showModalIndirizzoDialog()" icon="pi pi-plus" label="Aggiungi un nuovo indirizzo"></p-button>
+					</ng-template>
+					<p-dialog header="Modifica indirizzo" [(visible)]="displayModalIndirizzo" [modal]="true" [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+						<div class="row divRow">
+						<div class="labelDiv">
+							<p class="labelP">Regione</p>
+							<p-dropdown [options]="regioni" [(ngModel)]="regioneSelezionata" (onChange)="trovaProvincia()" [style]="{height:'45px',width:'250px'}"></p-dropdown>
+						</div>
+						<div class="labelDiv">
+							<p class="labelP">Provincia</p>
+							<p-dropdown [options]="province" [(ngModel)]="provinciaSelezionata" (onChange)="trovaCitta(provinciaSelezionata)" [style]="{height:'45px',width:'250px'}"></p-dropdown>
+						</div>
+						</div>
+						<div class="row divRow">
+							<div class="labelDiv">
+								<p class="labelP">Citta</p>
+								<p-dropdown [options]="citta" [(ngModel)]="cittaSelezionata" [style]="{height:'45px',width:'250px'}"></p-dropdown>
+							</div>
+							<div class="labelDiv"> 
+								<p class="labelP">CAP</p>
+								<input type="text" [style]="{height:'45px',width:'250px'}" [(ngModel)]="capSelezionato" pInputText/>
+							</div>
+						</div>
+						<div class="row divRow">
+							<div class="labelDiv">
+								<p class="labelP">Via</p>
+								<input type="text" [style]="{height:'45px',width:'250px'}" [(ngModel)]="viaSelezionata" pInputText/>
+							</div>
+						</div>
+						<ng-template pTemplate="footer">
+							<ng-container *ngIf="existsInd; then tBl else eBl"></ng-container>
+					        <ng-template #tBl>
+								<p-button icon="pi pi-check" (click)="mettiIndirizzo()" label="Modifica"></p-button>
+							</ng-template>
+							<ng-template #eBl>
+								<p-button icon="pi pi-check" (click)="mettiIndirizzo()" label="Aggiungi"></p-button>
+							</ng-template>
+						</ng-template>
+					</p-dialog>
+				</p-accordionTab>
+				<p-accordionTab header="Finalizza ordine" [(selected)]="activeState[1]" [disabled]="isNotActive()">
+					<p-tabView (activeIndexChange)="isActiveTab($event)" styleClass="tabview-custom">
+						<p-tabPanel> 
+							<ng-template pTemplate = "header">
+								<i class="pi pi-credit-card"></i><span>&nbsp; Paga con carta</span>
+							</ng-template>
+							<ng-container *ngIf="carte.length>0; then mostraCarte else mostraScritta"></ng-container>
+							<ng-template #mostraCarte>
+								
+									<h4><strong>Le tue carte di credito</strong></h4>
+									<br>
+									<br>
+									<div class="row" id="label">
+										<div id="primoPar">
+
+										</div>
+										<div id="secondoPar">
+											<label><strong>Tipologia carta</strong></label>
+										</div>
+										<div id="terzoPar">
+											<label><strong>Numero carta</strong></label>
+										</div>
+										<div id="quartoPar">
+											<label><strong>Titolare</strong></label>
+										</div>
+										<div id="quintoPar">
+											<label><strong>Data di scadenza</strong></label>
+										</div>
+										<div id="sestoPar">
+											<label><strong>Operazioni</strong></label>
+										</div>
+									</div>
+									<hr>
+								
+								<div *ngFor="let carta of carte">
+										<div class="row" id="parametri">
+											<div id="primoPar">
+												<p-radioButton (click)="scegliCarta() "[style]="{'left': '15px'}" [value]="carta" [(ngModel)]="selectedCarta"></p-radioButton>
+											</div>
+											<div id="secondoPar">
+												<div *ngIf="carta.tipologia==='Maestro';then maestro"></div>
+												<ng-template #maestro>
+													<img src="https://i.ibb.co/RYxQ7Hm/maestro.png" id="imgCarta" alt="maestro" border="0">
+												</ng-template>
+
+												<div *ngIf="carta.tipologia==='Mastercard';then mastercard"></div>
+												<ng-template #mastercard>
+													<img src="https://i.ibb.co/BLSKR0d/master.png" id="imgCarta" alt="master" border="0">
+												</ng-template>
+
+												<div *ngIf="carta.tipologia==='American Express';then american"></div>
+												<ng-template #american>
+													<img src="https://i.ibb.co/SmpjzxF/american.png" id="imgCarta" alt="american" border="0">
+												</ng-template>
+
+												<div *ngIf="carta.tipologia==='Visa';then visa"></div>
+												<ng-template #visa>
+													<img src="https://i.ibb.co/MBvFJ51/visa.png" id="imgCarta" alt="visa" border="0">
+												</ng-template>
+
+											</div>
+											<div id="terzoPar">
+												<label><strong>{{carta.tipologia}}</strong> termina con {{carta.numeroCarta.substring(12,16)}}</label>
+											</div>
+											<div id="quartoPar">
+												<label id="second">{{carta.titolare}}</label>
+											</div>
+											<div id="quintoPar">
+												<label id="third">{{carta.meseScadenza}}/{{carta.annoScadenza}}</label>
+											</div>
+											<div id="sestoPar">
+												<button pButton pRipple type="button" label="Elimina" (click)="cancellaCarta(carta.id)" class="p-button-rounded p-button-danger"></button>
+											</div>
+										</div>
+									
+									<hr>
+								</div>
+							</ng-template>
+							<ng-template #mostraScritta>
+								<h5>Nessuna carta inserita</h5>
+								<br>
+							</ng-template>
+							<p-button (click)="showModalCartaDialog()" icon="pi pi-plus" label="Aggiungi una nuova carta"></p-button>
+							<p-dialog header="Compila i campi" [(visible)]="displayModalCarta" [modal]="true" [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+								<div class="row divRow">
+									<div class="labelDiv">
+										<p class="labelP">Numero di carta</p>
+										<input type="text" [(ngModel)]="numeroCartaSelezionato" placeholder="5333-XXXX-XXXX-XXXX" [style]="{height:'45px',width:'250px'}" pInputText/>
+									</div>
+									<div class="labelDiv">
+										<p class="labelP">Titolare (nome e cognome)</p>
+										<input type="text" [(ngModel)]="titolareSelezionato" placeholder="Mario Rossi" [style]="{height:'45px',width:'250px'}" pInputText/>
+									</div>
+								</div>
+								<div class="row divRow">
+									<div class="labelDiv">
+										<p class="labelP">CVV</p>
+										<input type="text" [(ngModel)]="cvvSelezionato" placeholder="000" [style]="{height:'45px',width:'250px'}" pInputText/>
+									</div>
+									<div class="labelDiv"> 
+										<div class="labelDiv">
+											<p class="labelP">Tipologia</p>
+											<p-dropdown id="tipiCarta" appendTo="body" [options]="tipiCarta" [(ngModel)]="tipoSelezionato" [style]="{height:'45px',width:'250px'}"></p-dropdown>
+										</div>
+									</div>
+								</div>
+								<div class="row divRow">
+									<div class="labelDiv">
+										<p class="labelP">Data di scadenza</p>
+										<p-dropdown appendTo="body" [options]="mesi" [(ngModel)]="meseSelezionato" [style]="{height:'45px',width:'100px'}"></p-dropdown>
+										<p-dropdown appendTo="body" [options]="anni" [(ngModel)]="annoSelezionato" [style]="{height:'45px',width:'120px'}"></p-dropdown>
+									</div>
+								</div>
+								<ng-template pTemplate="footer">
+									<p-button icon="pi pi-check" (click)="aggiungiCarta()" label="Aggiungi"></p-button>
+								</ng-template>
+							</p-dialog>
+						</p-tabPanel>
+						<p-tabPanel>
+							<ng-template pTemplate = "header">
+								<i class="pi pi-euro"></i><span>&nbsp;&nbsp;Paga con saldo Techzon</span>
+							</ng-template>
+							<h2>Saldo Techzon</h2>
+							<br>
+							<h4>Il tuo saldo: <strong>€ {{(user.saldo).toFixed(2)}}</strong></h4>
+							<br>
+							<ng-container *ngIf="user.saldo<totale; then saldoInsufficiente else saldoSufficiente"></ng-container>
+							<ng-template #saldoInsufficiente>
+								<h6 [style]="{'color':'red'}">Il tuo saldo non è sufficiente per effettuare l'acquisto</h6>
+							</ng-template> 
+							<ng-template #saldoSufficiente>
+								<h6 [style]="{'color':'green'}">Premi acquista per effettuare l'ordine con il saldo Techzon</h6>
+							</ng-template> 
+						</p-tabPanel>
+					</p-tabView>
+				</p-accordionTab>
+			</p-accordion>
+		</div>
+		<ng-container *ngIf="isNotActive(); then thenBlock else elseBlock"></ng-container>
+		<ng-template #thenBlock>
+			<div id="pulsante">
+				<p-card [style]="{width: '100%', 'border': '1px solid var(--surface-d)'}" styleClass="p-card-shadow">
+					<h4><strong>Totale carrello</strong></h4>
+					<hr>
+					<ng-template ngFor let-cart [ngForOf]='carrello'>
+						<p>{{cart.prodotto.titolo}} <strong>(x{{cart.quantita}})</strong></p>
+					</ng-template>
+					<hr>
+					<h5><strong>{{totale.toFixed(2)}} €</strong></h5>
+					<hr>
+					<ng-container *ngIf="existsInd; then tBlo else eBlo"></ng-container>
+					<ng-template #tBlo>
+						<button pButton type="button" (click)="cambiaPagina()" class="p-button-warning" label="Spedisci a questo indirizzo" icon="pi pi-check"></button>  
+					</ng-template>
+					<ng-template #eBlo>
+						<button  pButton type="button" class="p-button-warning" label="Spedisci a questo indirizzo" [disabled]="true" icon="pi pi-check"></button>  
+					</ng-template>
+				</p-card>
+			</div>
+		</ng-template>
+		<ng-template #elseBlock>
+			<div id="pulsante">
+				<p-card [style]="{width: '100%', 'border': '1px solid var(--surface-d)'}" styleClass="p-card-shadow">
+					<h4><strong>Totale carrello</strong></h4>
+					<hr>
+					<ng-template ngFor let-cart [ngForOf]='carrello'>
+						<p>{{cart.prodotto.titolo}} <strong>(x{{cart.quantita}})</strong></p>
+					</ng-template>
+					<hr>
+					<h5><strong>{{totale.toFixed(2)}} €</strong></h5>
+					<hr>
+					<ng-container *ngIf="(user.saldo<totale && tabActive === 1) || (carte.length === 0 && tabActive === 0); then disabilita else abilita"></ng-container>
+					<ng-template #abilita>
+						<button pButton type="button" class="p-button-success" (click)="displayDialogConferma = true" label="Acquista ora" icon="pi pi-check"></button> 
+					</ng-template>
+					<ng-template #disabilita>
+						<button pButton type="button" class="p-button-success" label="Acquista ora" icon="pi pi-check" [disabled]="true"></button> 
+					</ng-template> 
+				</p-card>
+			</div>
+		</ng-template>
+   </div>
+   <p-dialog [(visible)]="displayDialog" header="Avviso" [modal]="true" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+	<p><strong>{{avviso}}</strong></p>
+		<ng-template pTemplate="footer">
+			<p-button (click)="displayDialog=false" label="Ok" styleClass="p-button-text"></p-button>
+		</ng-template>
+	</p-dialog>
+	
+	<p-dialog [(visible)]="displayDialogConferma" header="Avviso" [modal]="true" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+		<p><strong>Vuoi procedere all'acquisto ?</strong></p>
+			<ng-template pTemplate="footer">
+				<p-button (click)="effettuaOrdine()" label="Conferma" styleClass="p-button-text"></p-button>
+        		<p-button (click)="displayDialogConferma=false" label="Annulla" styleClass="p-button-text"></p-button>
+			</ng-template>
+	</p-dialog>
+</body>
+</html>

@@ -1,0 +1,205 @@
+html{
+    min-width: 1100px !important;
+    width: 100% !important;
+    padding: 0% !important;
+    margin: 0% !important;
+    overflow-x: hidden;
+    overflow-y: hidden;  
+}
+
+body{
+    width: 100% !important;
+    padding: 0% !important;
+    margin: 0% !important;
+}
+
+#header{
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+#divImmagine{
+    height:10% !important;
+    width:20% !important;
+    margin-top: 5px !important;
+    justify-content: center;
+    display: flex;
+}
+
+#imgProdotti{
+    position: relative;
+    margin-top: 20px;
+    height:180px !important;
+    width: auto !important;
+}
+
+#sortDrop{
+    width: 40%;
+}
+
+#imgProdottiList{
+    cursor: pointer;
+    width: 25%;
+    height: 250px;
+}
+
+#imgProdottiGrid{
+    position: relative;
+    cursor: pointer;
+    height: 190px;
+    height:190px !important;
+    width: auto !important;
+}
+
+#listProduct{
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 0%;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border: solid 1px;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.product-list-item{
+    width: 100%;
+    border: 1px;
+    padding: 0% !important;
+    margin: 0%;
+}
+
+.product-list-detail{
+    padding: 2%;
+    width: 55%;
+    border: 1px;
+}
+
+.product-list-price{
+    text-align: center;
+    width: 15%;
+    height: 60px;
+}
+
+.product-list-price > .product-price{
+    top: 25px;
+    font-size: x-large;
+    position: relative;
+    text-decoration: underline;
+}
+
+.product-list-price > .product-price-old{
+    text-decoration: line-through;
+    font-size: small;
+    position: relative;
+    bottom: 10%;
+}
+
+.product-list-price > .product-price-sconto{
+    margin-left: 10%;
+    text-decoration: underline;
+    font-size: x-large;
+    color: red;
+    text-decoration-color: red;
+}
+
+.product-name{
+    cursor: pointer;
+}
+
+.product-list-action{
+    text-align: center;
+    width: 10%;
+    border: solid 1px;
+    position: relative;
+    left: 15px !important;
+    border-radius: 0px 15px 15px 0px;
+    border-right: transparent;
+    border-top: transparent;
+    border-bottom: transparent;
+    background-color: lavender;
+}
+
+.product-list-action > .sub-action{
+    padding-top: 13%;
+    padding-bottom: 2%;
+}
+
+#etichetta{
+    padding-top: 3%;
+    text-align: center;
+}
+
+#divProdotti{
+    width: 26%;
+    padding-left: 4% !important;
+    padding-right: 2% !important;
+    padding-top: 2% !important;
+    padding-bottom: 1% !important;
+}
+
+#cardProdotto{
+    width: 100%;
+    height: 360px;
+    text-align: center;
+}
+
+#divTag{
+    margin: 0%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: left;
+}
+
+#divStatus{
+    text-align: center;
+}
+
+#footerProdotto{
+    top: 5%;
+    position: relative;
+    margin: 0%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.product-price{
+    top: 15%;
+    position: relative;
+    text-decoration: underline;
+}
+
+.product-price-sconto{
+    top: 36%;
+    right: 20%;
+    position: relative;
+    text-decoration: underline;
+    color: red;
+    text-decoration-color: red;
+}
+
+.product-price-old{
+    text-decoration: line-through;
+    font-size: 80%;
+    position: relative;
+    bottom: 10%;
+}
+
+#addedDate{
+    font-size: 85%;
+}
+
+::ng-deep .p-dropdown{
+    max-width: 230px !important;
+    min-width: 230px !important;
+}
+
+@media screen and (max-width: 1280px){
+    #divProdotti{
+        padding-left: 1% !important;
+        
+    }
+}
+

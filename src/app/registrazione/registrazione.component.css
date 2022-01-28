@@ -1,0 +1,135 @@
+html{
+  min-width: 1100px !important;
+  width: 100% !important;
+  padding: 0% !important;
+  margin: 0% !important;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: gainsboro;
+}
+
+body{
+  width: 100% !important;
+  height: 1100px;
+  padding: 0% !important;
+  margin: 0% !important;
+  background-color: gainsboro;
+}
+
+#imgLatoSinistro{
+  margin-left: 1.5% !important;
+}
+
+#divImgLatoSinistro{
+  width: 10%;
+  height: 800px;
+}
+
+#parteCentrale{
+  width: 80%;
+  height: 1300px;
+  background-color: gainsboro;
+}
+
+#divImgLatoDestro{
+  width: 10%;
+  height: 800px;
+}
+
+#campoPassword{
+  width: 96%;
+}
+
+#campoData{
+  width: 96%;
+}
+
+#divNome{
+  width: 31%;
+  margin-left: 2%!important;
+}
+
+#divCognome{
+  width: 31%;
+  margin-left: 2% !important;
+}
+
+#divData{
+  left:4%;
+  width: 31%;
+  margin-left: 2% !important;
+}
+
+#divEmail{
+  width: 31%;
+  margin-left: 2% !important;
+  }
+
+#divUsername{
+  width: 31%;
+  margin-left: 2% !important;
+}
+
+#divNumero{
+  width: 30%;
+  margin-left: 2% !important;
+}
+
+#divGenere{
+  width: 31%;
+}  
+
+#genere-help{
+  margin-left: 32% !important;
+}
+
+#divPassword{
+  width: 31%;
+  margin-left: 2%!important;
+}
+
+#titolo{
+  margin-left: 2%;
+}
+
+#imgCaricamento{
+  width: 150px;
+  height: 130px;
+  border-radius: 50%;
+}
+
+#selezionaImg{
+  display: block;
+  text-align: center;
+}
+
+#bottoneAvanti1{
+  margin-left: 1%;
+}
+
+#rigaInModale{
+  margin: 0%;
+}
+
+#sinistraModale{
+  height: 70px;
+  width: 70%;
+}
+
+#destraModale{
+  height: 70px;
+  width: 30%;
+}
+
+#iconModale{
+  color: red;
+}
+
+#scegliFoto{
+  width: 30%;
+}
+
+::ng-deep .spinDialog{
+  height: 150px;
+  box-shadow: none;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>Techzon</title>
+    </head>
+    <body>
+        <p-table [value]="resi" responsiveLayout="scroll" [style]="{padding: '3%'}">
+            <ng-template pTemplate="caption">
+                <div class="row justify-content-between">
+                    Cronologia dei resi effettuati
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Numero Ordine</th>
+                    <th>Id Prodotto</th>
+                    <th>Cliente</th>
+                    <th>Motivo Reso</th>
+                    <th>Quantità</th>
+                    <th>Prezzo singolo</th>
+                    <th>Prezzo totale</th>
+                    <th>Opzioni</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-reso>
+                <tr>
+                    <td>{{reso.numeroOrdine.id}}</td>
+                    <td>{{reso.idProdotto}}</td>
+                    <td>{{reso.usernameMittente}}</td>
+                    <td>{{reso.motivoReso}}</td>
+                    <td>{{reso.quantita}}</td>
+                    <td>{{reso.prezzo.toFixed(2)/reso.quantita}}</td>
+                    <td>{{reso.prezzo.toFixed(2)}}</td>
+                    <td>
+                        <div *ngIf="reso.rimborsato==false; then rimborsoSi else rimborsoNo"></div>
+                        <ng-template #rimborsoSi>
+                            <button pButton pRipple icon="pi pi-euro" (click)="effettuaRimborso(reso)" type="button" label="Effettua Rimborso" class="p-button-warning"></button>
+                        </ng-template>
+                        <ng-template #rimborsoNo>
+                            <button pButton pRipple disabled="true" icon="pi pi-euro" type="button" label="Rimborso Effettuato" class="p-button-success"></button>
+                        </ng-template>
+
+                        <p-dialog header="Rimborso effettuato" id="modal" [(visible)]="apriModaleRimborsoEffettuatoBoolean" [style]="{width: '10vw', height: '250px', 'min-width':'500px'}">
+                            <div class="row justify-content-start textCenter">
+                                <p style="text-align:center">
+                                <h5>Rimborso effettuato con successo!</h5>
+                            </div>
+                        </p-dialog>
+
+                        <p-dialog header="Rimborso già effettuato" id="modal" [(visible)]="apriModaleRimborsoGiaEffettuatoBoolean" [style]="{width: '10vw', height: '250px', 'min-width':'500px'}">
+                            <div class="row justify-content-start textCenter">
+                                <h5>Questo rimborso è stato già effettuato!</h5>
+                            </div>
+                        </p-dialog>
+
+                        <p-dialog header="Saldo Insufficiente" id="modal" [(visible)]="apriModaleSaldoInsufficienteBoolean" [style]="{width: '10vw', height: '250px', 'min-width':'500px'}">
+                            <div class="row justify-content-start textCenter">
+                                <h5>Saldo isufficiente per il rimborso!</h5>
+                            </div>
+                        </p-dialog>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    Totale resi: {{ resi ? resi.length : 0 }}
+                </div>
+            </ng-template>
+        </p-table>
+    </body>
+</html>

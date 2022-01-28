@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>Premi</title>
+    </head>
+    <body>
+        <div id="header">
+            <div><h1> Riscatta qui i tuoi premi </h1></div>
+            <hr class="line">
+        </div>
+        <div class="row p-shadow-8">
+            <p-card [style]="{width: '360px', 'text-align': 'center'}" styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+                    <img class="imgCard" alt="Card" src="https://i.ibb.co/jrkVTg7/card5-rounded.png">
+                </ng-template>
+                <span id="riscatto">Punti richiesti per riscattare il premio: <label>100 pt</label></span>
+                <ng-template pTemplate="footer">
+                    <p-button (click)="riscuotiPremio(5, 100)" label="Riscatta premio" icon="pi pi-plus-circle"></p-button>
+                </ng-template>
+            </p-card>
+            <p-card [style]="{width: '360px', 'text-align': 'center'}" styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+                    <img class="imgCard" alt="Card" src="https://i.ibb.co/qgqNJ8h/card20-rounded.png">
+                </ng-template>
+                <span id="riscatto">Punti richiesti per riscattare il premio: <label>350 pt</label></span>
+                <ng-template pTemplate="footer">
+                    <p-button (click)="riscuotiPremio(20, 350)" label="Riscatta premio" icon="pi pi-plus-circle"></p-button>
+                </ng-template>
+            </p-card>
+            <p-card [style]="{width: '360px', 'text-align': 'center'}" styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+                    <img class="imgCard" alt="Card" src="https://i.ibb.co/jGb3Y5L/card50-rounded.png">
+                </ng-template>
+                <span id="riscatto">Punti richiesti per riscattare il premio: <label>600 pt</label></span>
+                <ng-template pTemplate="footer">
+                    <p-button (click)="riscuotiPremio(50, 600)" label="Riscatta premio" icon="pi pi-plus-circle"></p-button>
+                </ng-template>
+            </p-card>
+        </div>
+        <p-dialog [(visible)]="displayDialog" header="Avviso" [modal]="true" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+            <p><strong>{{avviso}}</strong></p>
+            <ng-template pTemplate="footer">
+                <p-button (click)="displayDialog=false" label="Ok" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-dialog>
+    </body>
+</html>

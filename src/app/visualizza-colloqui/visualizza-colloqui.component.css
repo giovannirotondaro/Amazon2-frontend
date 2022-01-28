@@ -1,0 +1,331 @@
+html{
+    min-width: 1100px !important;
+    width: 100% !important;
+    padding: 0% !important;
+    margin: 0% !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  
+  body{
+    width: 100% !important;
+    height: 1300px;
+    padding: 0% !important;
+    margin: 0% !important;
+  }
+
+#header, #secondHeader{
+  margin: 0%;
+  padding-top: 2%;
+  padding-left: 3%;
+}
+
+#secondHeader > i{
+  font-size: x-large;
+  padding-top: 4px;
+  margin-left: 5px;
+}
+
+#firstRow, #secondRow{
+  justify-content: space-around;
+}
+
+#secondRow > #addressField{
+  margin-top: 30px;
+}
+
+#addressField, #addressImage{
+  font-size: large;
+  text-decoration: underline;
+}
+
+#addressField > i{
+  text-decoration-color: black;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+#addressImage > i{
+  text-decoration-color: black;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+hr{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#line{
+  width: 80%;
+}
+
+#addressImage{
+  text-align: center;
+}
+
+#fakeIcon{
+  text-decoration-color: black;
+  font-weight: bolder;
+  margin-left: 5px;
+  font-size: small;
+}
+
+  /**************************************/
+  
+  #secondPic{
+    margin-left: 1.5% !important;
+  }
+  
+  .wrapper {
+    width: 100%;
+    height: 800px;
+  }
+  
+  #v1{
+    width: 10%;
+    height: 800px;
+  }
+  
+  #parteReg{
+    width: 80%;
+    height: 1300px;
+    background-color: rgb(231, 231, 230);
+  }
+  
+  #v2{
+    width: 10%;
+    height: 800px;
+  }
+
+  #riepilogoSpedizione{
+      width: 100%;
+      height: 400px;
+  }
+
+  #spazio1{
+      width: 5%;
+  }
+
+  #imgCaricamento{
+      width: 400px;
+      height: 240px;
+  }
+
+  #accetto1{
+      width: 20%;
+      height: 300px;
+      background-color: rgb(183, 243, 201);
+      border-radius: 20%;
+  }
+
+  #rigaOperazioni{
+    padding: 5%;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  #imgUtente{
+    width: 100%;
+    height: 120px;
+    border-radius: 60%;
+    border-color: black;
+      border-style: solid;
+      border-width: 1px;
+  }
+
+  #contenuto{
+    width: 100%;
+  }
+
+  #parteImg{
+    height: 120px;
+    width: 10%;
+  }
+
+  #parteCentrale{
+    width: 70%;
+    /*background-color: aqua;*/
+  }
+
+  #rigaInfo1{
+    height: 47px;
+    margin: 0;
+  }
+
+  #nomeInfo{
+    width: 37%;
+    /*background-color: aquamarine;*/
+  }
+
+  #cognomeInfo{
+    width: 37%;
+    /*background-color: rgb(104, 185, 151);*/
+  }
+
+  
+  #rigaInfo2{
+    height: 47px;
+    margin: 0;
+  }
+
+  #usernameInfo{
+    width: 37%;
+    /*background-color: rgb(146, 170, 202);*/
+  }
+
+  #emailInfo{
+    width: 37%;
+    /*background-color: rgb(108, 108, 172);*/
+  }
+  
+
+  #rigaInfo3{
+    height: 47px;
+    margin: 0;
+  }
+
+  #telefonoInfo{
+    width: 37%;
+    /*background-color: rgb(156, 79, 120);*/
+  }
+
+  #dataInfo{
+    width: 37%;
+    /*background-color: rgb(42, 122, 136);*/
+  }
+
+  #saldoInfo{
+    width: 13%;
+    /*background-color: rgb(185, 176, 40);*/
+  }
+
+  #genereInfo{
+    width: 13%;
+    /*background-color: rgb(177, 188, 238);*/
+  }
+
+  #puntiInfo{
+    width: 13%;
+    /*background-color: rgb(93, 165, 109);*/
+  }
+
+  #bloccatoInfo{
+    width: 13%;
+    /*background-color: rgb(61, 127, 235);*/
+  }
+ 
+  #prodottiVendutiInfo{
+    width: 26%;
+    /*background-color: rgb(61, 235, 177);*/
+  }
+
+  #bloccoVerde{
+    color: rgb(35, 204, 35);
+  }
+
+  #parteBottoni{
+
+    /*background-color: aquamarine;*/
+    width: 20%;
+  }
+
+  #rigaInfo4{
+    height: 30px;
+    margin: 0;
+  }
+
+  #rigaInfo5{
+    margin: 0;
+  }
+
+  #rigaInfo6{
+    margin: 0;
+  }
+
+  #bloccaUtente{
+    margin-bottom: 3%;
+  }
+
+  #modificaUtente{
+    margin-bottom: 3%;
+  }
+
+  #linea{
+    margin-left: 8%;
+  }
+ 
+  @media only screen and (max-width: 1450px ) {
+    #parteImg{
+      height: 110px;
+      width: 14%;
+    }
+
+    #parteCentrale{
+      width: 66%;
+      /*background-color: aqua;*/
+    }
+    
+
+    #imgUtente{
+      width: 100%;
+      height: 110px;
+      border-radius: 60%;
+      border-color: black;
+      border-style: solid;
+      border-width: 1px;
+    }
+  }
+
+  #divAlert{
+    text-align: center;
+    width: 40%;
+    height: 50px;
+    background-color: transparent;
+    color: aliceblue;
+    border-radius: 20px 20px 20px 20px;
+  }
+
+  #messaggioErrore{
+    margin-top: 10px;
+  }
+
+#sinistraModale{
+  margin-top: 10px;
+  height: 70px;
+  width: 70%;
+}
+
+#destraModale{
+  height: 70px;
+  width: 30%;
+}
+
+#rigaLoginSbagliato{
+  margin: 0;
+}
+
+#iconModale{
+  color: red;
+}
+
+#ultimaImmagineLatoSinistro{
+  margin-left: 1.5% !important;
+}
+
+#divImmaginiLatoSinistro{
+  width: 10%;
+  height: 800px;
+}
+
+#divImmaginiLatoDestro{
+  width: 10%;
+  height: 800px;
+}
+
+#divParteCentrale{
+  width: 80%;
+  height: 1300px;
+  background-color: rgb(231, 231, 230);
+}

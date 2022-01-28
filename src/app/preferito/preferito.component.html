@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <div *ngIf="preferiti.length == 0">
+            <div [style]="{'text-align':'center', 'padding-top':'30px'}">
+                <h2>Nessun prodotto presente nei preferiti</h2>
+            </div>
+        </div>
+        <p-orderList [value]="preferiti" header="I miei preferiti" [style]="{'margin':'3%'}">
+            <ng-template let-preferiti pTemplate="item">
+                <div class="product-item">
+                    <div class="row">
+                        <div class="col-4" id="divFotoProdotto" [routerLink]="['/prodotto/' + preferiti.prodotto.id]">
+                            <img src="{{preferiti.prodotto.url1}}" [style]="{width: 'auto', height: '180px'}" [alt]="preferiti.prodotto.titolo" class="product-image" />
+                        </div>
+                        <div class="col-7" id="divInfoProdotto" [routerLink]="['/prodotto/' + preferiti.prodotto.id]">
+                            <h5>{{preferiti.prodotto.titolo}}</h5>
+                            <i class="pi pi-tag product-category-icon"></i>
+                            <span class="product-category">{{preferiti.prodotto.categoria}}</span>
+                        </div>
+                        <div class="col-1" id="parte2">
+                            <div class="product-list-action">
+                                <button pButton pRipple (click)="rimuoviPreferito(preferiti)" type="button" icon="pi pi-times" class="p-button-rounded p-button-danger"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-orderList>
+    </body>
+</html>

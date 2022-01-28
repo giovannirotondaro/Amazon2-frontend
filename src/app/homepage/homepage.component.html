@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Techzon</title>
+</head>
+<body>
+	<div id="content">
+		<div>
+			<h3 class="title"><strong>Panoramica prodotti <i class="pi pi-shopping-bag" style="font-size: 1.5rem"></i></strong></h3>
+		</div>
+		<hr class="line">
+		<p-carousel [value]="products" [numVisible]="3" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+			<ng-template let-product pTemplate="item">
+				<div class="product-item">
+					<div class="product-item-content">
+						<div class="p-mb-3">
+							<img src="{{product.url1}}" [alt]="product.nome" class="product-image" [style]="{width: 'auto', height: '180px'}"/>
+						</div>
+						<div>
+							<h4 class="p-mb-1">{{product.titolo}}</h4>
+							<h5 class="p-mt-0 p-mb-3">€{{product.prezzo}}</h5>
+							<span *ngIf="product.disponibile; then thenBlock else elseBlock"></span>
+							<ng-template #thenBlock> <p-chip label="DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'darkgreen', background: 'yellowgreen'}"></p-chip></ng-template>
+							<ng-template #elseBlock> <p-chip label="NON DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'black', background: 'salmon'}"></p-chip></ng-template>
+							<h6>Venduto da: <b>{{product.vendutoDa.cognome}} {{product.vendutoDa.nome}}</b></h6>
+							<div class="car-buttons p-mt-5">
+								<p-button type="button" styleClass="p-button-secondary p-button-rounded p-mr-2" [routerLink]="['/prodotto/' + product.id]" icon="pi pi-search-plus"></p-button>
+								<p-button type="button" (click)="aggiungiAiPreferiti(product)" styleClass="p-button p-button-rounded p-mr-2" icon="pi pi-star-fill" [style]="{'background-color': 'rgb(0,175,227)', border: 'none'}"></p-button>
+								<p-button (click)=addInCart(product.id) type="button" styleClass="p-button-success p-button-rounded" icon="pi pi-shopping-cart" [disabled]="product.disponibile === false"></p-button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+		</p-carousel>
+		<div>
+			<h3 class="title">Offerte migliori <i class="pi pi-briefcase" style="font-size: 1.5rem"></i></h3>
+		</div>
+		<hr class="line">
+		<div class="row">
+			<ng-template ngFor let-product [ngForOf]='discProducts' pTemplate="item">
+				<div class="disc-product-item">
+					<div class="disc-product-item-content">
+						<div class="p-mb-3">
+							<img src="{{product.url1}}" [alt]="product.titolo" class="product-image" [style]="{width: 'auto', height: '180px'}"/>
+						</div>
+						<div>
+							<h4 class="p-mb-1">{{product.titolo}}</h4>
+							<h6 id="oldPrice" class="p-mt-0 p-mb-3">€{{product.prezzo}}</h6> <h3 id="discPrice">€{{(product.prezzo - (product.prezzo * (product.sconto / 100))).toFixed(2)}}</h3>
+							<span *ngIf="product.disponibile; then thenBlock else elseBlock"></span>
+							<ng-template #thenBlock> <p-chip label="DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'darkgreen', background: 'yellowgreen'}"></p-chip></ng-template>
+							<ng-template #elseBlock> <p-chip label="NON DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'black', background: 'salmon'}"></p-chip></ng-template>
+							<h6>Venduto da: <b>{{product.vendutoDa.cognome}} {{product.vendutoDa.nome}}</b></h6>
+							<div class="car-buttons p-mt-5">
+								<p-button type="button" styleClass="p-button-secondary p-button-rounded p-mr-2" [routerLink]="['/prodotto/' + product.id]" icon="pi pi-search-plus"></p-button>
+								<p-button type="button" (click)="aggiungiAiPreferiti(product)" styleClass="p-button p-button-rounded p-mr-2" icon="pi pi-star-fill" [style]="{'background-color': 'rgb(0,175,227)', border: 'none'}"></p-button>
+								<p-button (click)=addInCart(product.id) type="button" styleClass="p-button-success p-button-rounded" icon="pi pi-shopping-cart" [disabled]="product.disponibile === false"></p-button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+		</div>
+		<br>
+	</div>
+	<p-dialog [(visible)]="displayDialog" header="Avviso" [modal]="true" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+	<p><strong>{{avviso}}</strong></p>
+		<ng-template pTemplate="footer">
+			<p-button (click)="displayDialog=false" label="Ok" styleClass="p-button-text"></p-button>
+		</ng-template>
+	</p-dialog>
+</body>
+</html>

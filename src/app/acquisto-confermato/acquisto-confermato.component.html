@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Techzon</title>
+</head>
+<body>
+    <ng-container *ngIf="AcquistoConfermatoComponent.carrello === undefined; then noShow else show"></ng-container>
+    <ng-template #noShow>
+        <div id="navbar">
+            <div id="nuovoHeader" class="row">
+                <div id="parteSinistraBarra">
+                    <img id="logoImg" src="https://i.ibb.co/TL2nDQY/tecno-Zone-logo.png">
+                </div>
+                <div id="parteCentraleBarra">
+                </div>
+                <div id="parteDestraBarra">
+                    <button id="home" pButton (click)="goToHome()">Homepage&nbsp;&nbsp;<i class="pi pi-arrow-left"></i></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+        
+    <ng-template #show>
+        <div id="navbar">
+            <div id="nuovoHeader" class="row">
+                <div id="parteSinistraBarra">
+                    <img id="logoImg" src="https://i.ibb.co/TL2nDQY/tecno-Zone-logo.png">
+                </div>
+                <div id="parteCentraleBarra">
+                    <h3>Riepilogo acquisto</h3>
+                </div>
+                <div id="parteDestraBarra">
+                    <button id="home" pButton (click)="goToHome()">Homepage&nbsp;&nbsp;<i class="pi pi-arrow-left"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="main" class="row"> 
+            <div id="prodottiAcquistati"><label><strong>Prodotti acquistati</strong></label></div>
+            <div id="dettaglioOrdine"><label><strong>Dettaglio ordine</strong></label></div>
+            <div id="idFor">
+                <div *ngFor="let cart of AcquistoConfermatoComponent.carrello">
+                    <div id="divListaProdotti">
+                        <div id="listaProdotti">
+                            <div class="product-list-item row" >
+                                <div id="divImmagini">
+                                    <img id="imgProdottiList" src="{{cart.prodotto.url1}}">
+                                </div>
+                                <div id="divProdotti" class="product-list-detail">
+                                    <div class="product-name"><h6>{{cart.prodotto.titolo}}</h6></div>
+                                    <div class="product-model"><h6>Colore: <strong>{{cart.prodotto.colore}}</strong></h6></div>
+                                    <div class="product-user"><h6>Venduto da: <strong>{{cart.prodotto.vendutoDa.cognome}} {{cart.prodotto.vendutoDa.nome}}</strong></h6></div>
+                                    <div class="product-quantita"><h6>Quantità: <strong>{{cart.quantita}}</strong></h6></div>
+                                </div>
+                                <span class="product-price"> <h6><strong>€{{(cart.prodotto.prezzo - (cart.prodotto.prezzo * (cart.prodotto.sconto / 100))).toFixed(2)}}</strong> (al pezzo)</h6></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <div id="spazioProdottiAcquistatiDettaglioOrdine"></div>
+            <ng-container *ngIf="AcquistoConfermatoComponent.carta !== undefined; then tB else eB"></ng-container>
+            <ng-template #tB>
+                <div id="riepilogoOrdine" style="height: 456px !important;">
+                    <div id="totale">
+                        <h5>Totale ordine: <strong>{{AcquistoConfermatoComponent.totale.toFixed(2)}}</strong></h5>
+                    </div>
+                    <hr>
+                    <div id="indirizzo">
+                        <h5 id="labelInd">Indirizzo di consegna</h5>
+                        <h6>Regione: <strong>{{user.indirizzo.regione}}</strong></h6>
+                        <h6>Provincia: <strong>{{user.indirizzo.provincia}}</strong></h6>
+                        <h6>Città: <strong>{{user.indirizzo.citta}}</strong></h6>
+                        <h6>CAP: <strong>{{user.indirizzo.cap}}</strong></h6>
+                        <h6>Via: <strong>{{user.indirizzo.via}}</strong></h6>
+                    </div>
+                    <hr>
+                    <div id="pagamento">
+                        <h5 id="metodoPag">Metodo di pagamento</h5>
+                            <ng-container *ngIf="AcquistoConfermatoComponent.carta !== undefined; then t else e"></ng-container>
+                            <ng-template #t>
+                                <h6>Numero carta: termina con <strong>{{AcquistoConfermatoComponent.carta.numeroCarta.substring(12,16)}}</strong></h6>
+                                <h6>Titolare: <strong>{{AcquistoConfermatoComponent.carta.titolare}}</strong></h6>
+                                <h6>Tipo: <strong>{{AcquistoConfermatoComponent.carta.tipologia}}</strong></h6>
+                                <h6>Data di scadenza: <strong>{{AcquistoConfermatoComponent.carta.meseScadenza}}/{{AcquistoConfermatoComponent.carta.annoScadenza}}</strong></h6>
+                            </ng-template>
+                            <ng-template #e><h6> Pagato con: <strong>Saldo Techzon</strong></h6></ng-template>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #eB>
+                <div id="riepilogoOrdine" style="height: 370px !important;">
+                    <div id="totale">
+                        <h5>Totale ordine: <strong>{{AcquistoConfermatoComponent.totale.toFixed(2)}}</strong></h5>
+                    </div>
+                    <hr>
+                    <div id="indirizzo">
+                        <h5 id="labelInd">Indirizzo di consegna</h5>
+                        <h6>Regione: <strong>{{user.indirizzo.regione}}</strong></h6>
+                        <h6>Provincia: <strong>{{user.indirizzo.provincia}}</strong></h6>
+                        <h6>Città: <strong>{{user.indirizzo.citta}}</strong></h6>
+                        <h6>CAP: <strong>{{user.indirizzo.cap}}</strong></h6>
+                        <h6>Via: <strong>{{user.indirizzo.via}}</strong></h6>
+                    </div>
+                    <hr>
+                    <div id="pagamento">
+                        <h5 id="metodoPag">Metodo di pagamento</h5>
+                            <ng-container *ngIf="AcquistoConfermatoComponent.carta !== undefined; then th else el"></ng-container>
+                            <ng-template #th>
+                                <h6>Numero carta: termina con <strong>{{AcquistoConfermatoComponent.carta.numeroCarta.substring(12,16)}}</strong></h6>
+                                <h6>Titolare: <strong>{{AcquistoConfermatoComponent.carta.titolare}}</strong></h6>
+                                <h6>Tipo: <strong>{{AcquistoConfermatoComponent.carta.tipologia}}</strong></h6>
+                                <h6>Data di scadenza: <strong>{{AcquistoConfermatoComponent.carta.meseScadenza}}/{{AcquistoConfermatoComponent.carta.annoScadenza}}</strong></h6>
+                            </ng-template>
+                            <ng-template #el><h6> Pagato con: <strong>Saldo Techzon</strong></h6></ng-template>
+                    </div>
+                </div>
+            </ng-template>
+        </div>	
+    </ng-template>
+</body>
+</html>

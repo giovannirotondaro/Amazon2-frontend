@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <title>Techzon</title>
+    </head>
+
+    <body>
+        <br>
+        <div class="row justify-content-center">
+            <h2>Prodotti in vendita</h2>
+        </div>
+        <p-table [value]="prodottiVenditore" responsiveLayout="scroll" [responsive]="false" [style]="{padding: '3%'}">
+            <ng-template pTemplate="caption">
+                <div class="row justify-content-center">
+                    Nella seguente tabella è possibile visualizzare i tutti i miei prodotti in vendita.
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Titolo</th>
+                    <th>Immagine</th>
+                    <th>Prezzo</th>
+                    <th>Categoria</th>
+                    <th>Descrizione breve</th>
+                    <th>Disponibilità</th>
+                    <th>Opzioni</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{product.titolo}}</td>
+                    <td><img [src]="product.url1" [alt]="product.name" width="100" class="p-shadow-4" /></td>
+                    <td>{{product.prezzo | currency:'EUR'}}</td>
+                    <td>{{product.categoria}}</td>
+                    <td>{{product.anteprima}}</td>
+                    <td>
+                        <span *ngIf="product.disponibile; then thenBlock else elseBlock"></span>
+                        <ng-template #thenBlock>
+                            <p-chip label="DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'darkgreen', background: 'yellowgreen'}"></p-chip>
+                        </ng-template>
+                        <ng-template #elseBlock>
+                            <p-chip label="NON DISPONIBILE" styleClass="p-mr-2 custom-chip" [style]="{color: 'black', background: 'salmon'}"></p-chip>
+                        </ng-template>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <button pButton pRipple [routerLink]="['/modificaProdotto/' + product.id]" [style]="{width: '170px', height: '30px' , 'margin-bottom': '5px'}" icon="pi pi-pencil" type="button" label="Modifica" class="p-button-warning"></button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    In totale ci sono {{prodottiVenditore ? prodottiVenditore.length : 0 }} prodotti.
+                </div>
+            </ng-template>
+        </p-table>
+    </body>
+</html>

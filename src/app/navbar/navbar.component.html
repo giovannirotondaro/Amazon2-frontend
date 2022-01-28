@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Techzon</title>
+</head>
+<body>
+	<!-- MAIN HEADER -->
+	<div id="navbar">
+		<div id="nuovoHeader" class="row">
+			<div id="zeroBarra"></div>
+			<div id="primoBarra">
+				<div *ngIf="controllaSeLoggatoAdmin() || controllaSeLoggatoCorriere();then logoNo else logoSi"></div>
+				<ng-template #logoNo>
+					<img id="logoImg" src="https://i.ibb.co/TL2nDQY/tecno-Zone-logo.png">
+				</ng-template>
+				<ng-template #logoSi>
+					<a [routerLink]="['/']">
+					<img id="logoImg" src="https://i.ibb.co/TL2nDQY/tecno-Zone-logo.png">
+					</a>
+				</ng-template>
+			</div>
+			<div id="secondoBarra">
+				<div *ngIf="controllaSeLoggatoAdmin() || controllaSeLoggatoCorriere();then indirizzoNo else indirizzoSi"></div>
+				<ng-template #indirizzoNo>
+					<br>
+					<div *ngIf="controllaSeLoggatoCorriere();then corrieriNo else corrieriSi"></div>
+					<ng-template #corrieriNo>
+						<span><h1 id="scrittaSpedizione">Techzon Corrieri</h1></span>
+					</ng-template>
+					<ng-template #corrieriSi>
+						<span><h1 id="scrittaSpedizione">Techzon Admin</h1></span>
+					</ng-template>
+				</ng-template>
+				<ng-template #indirizzoSi>
+					<ng-container *ngIf="userIsLogged(); then ok else noInd"></ng-container>
+						<ng-template #ok><button pButton pRipple icon="pi pi-map-marker" (click)="scegliIndirizzo()" id="spedizioneButton">Ciao,<br>Scegli il tuo indirizzo.</button></ng-template>
+						<ng-template #noInd><button pButton pRipple icon="pi pi-map-marker" [routerLink]="['/login']" id="spedizioneButton">Ciao,<br>Scegli il tuo indirizzo.</button></ng-template>
+				 </ng-template>
+				 <p-dialog header="Compila i campi" [modal]="true" [(visible)]="displayBasic" [style]="{width: '40vw', height: '450px', 'min-width':'750px'}">
+					<div class="row divRow">
+						<div class="labelDiv">
+							<p class="labelP">Regione</p>
+							<p-dropdown [options]="regioni" [(ngModel)]="regioneSelezionata" (onChange)="trovaProvincia()" [style]="{height:'45px',width:'250px'}"></p-dropdown>
+						</div>
+						<div class="labelDiv">
+							<p class="labelP">Provincia</p>
+							<p-dropdown [options]="province" [(ngModel)]="provinciaSelezionata"  (onChange)="trovaCitta(provinciaSelezionata)" [style]="{height:'45px',width:'250px'}"></p-dropdown>
+						</div>
+					</div>
+					<div class="row divRow">
+						<div class="labelDiv">
+							<p class="labelP">Citta</p>
+							<p-dropdown [options]="citta" [(ngModel)]="cittaSelezionata" [style]="{height:'45px',width:'250px'}"></p-dropdown>
+						</div>
+						<div class="labelDiv"> 
+							<p class="labelP">CAP</p>
+							<input type="text" [style]="{height:'45px',width:'250px'}" [(ngModel)]="capSelezionato" pInputText/>
+						</div>
+					</div>
+					<div class="row divRow">
+						<div class="labelDiv">
+							<p class="labelP">Via</p>
+							<input type="text" [style]="{height:'45px',width:'250px'}" [(ngModel)]="viaSelezionata" pInputText/>
+						</div>
+					</div>
+					<ng-template pTemplate="footer">
+						<button pButton class="p-button-success" (click)="confermaIndirizzo()" icon="pi pi-check" label="Conferma"></button>
+					</ng-template>
+				</p-dialog>
+			</div>
+			
+			<div id="terzoBarra">
+				<div *ngIf="controllaSeLoggatoAdmin() || controllaSeLoggatoCorriere();then barraRicercaNo else barraRicercaSi"></div>
+				<ng-template #barraRicercaNo>
+				</ng-template>
+				<ng-template #barraRicercaSi>
+					<p-autoComplete appendTo="body" id="autocomplete" #autocomplete [(ngModel)]="selectedProduct" (keyup.enter)="autocomplete.hide();ricerca()" [suggestions]="filteredProducts" (completeMethod)="filterProduct($event)" [minLength]="1" placeholder="Cerca" class="p-autocomplete" [style]="{'width':'92%'}" [inputStyle]="{'width':'100%'}"></p-autoComplete>
+				</ng-template>
+			</div>
+			<div id="quartoBarra">
+				<div *ngIf="controllaSeLoggatoAdmin() || controllaSeLoggatoCorriere();then bottoneRicercaNo else bottoneRicercaSi"></div>
+				<ng-template #bottoneRicercaNo></ng-template>
+				<ng-template #bottoneRicercaSi>
+			 		<button pButton pRipple type="button" (click)="ricerca()" icon="pi pi-search" class="p-button" id="searchButton"></button>
+				</ng-template>
+			</div>
+			
+			<div id="quintoBarra">
+				<div id="quintoBarra1">
+					<ng-container *ngIf="user!==undefined; then showIm else noIm"></ng-container>
+						<ng-template #showIm><p-avatar image="{{user.immagineProfilo}}" styleClass="p-mr-2" size="large" shape="circle"></p-avatar></ng-template>
+						<ng-template #noIm><p-avatar image="{{userImage}}" styleClass="p-mr-2" size="large" shape="circle"></p-avatar></ng-template>
+				</div>
+				<div id="quintoBarra2">
+					<span>{{getProva()}}</span>
+				</div>
+			</div>
+			<div id="sestoBarra">
+				<div class="p-col">
+					<button pButton pRipple id="areaBtn" (click)="showPositionDialog('top-right')" label="Area personale" icon="pi pi-home" styleClass="p-button"></button>
+				</div>
+				<p-dialog appendTo="body" header="Benvenuto {{getProva()}}" [(visible)]="displayPosition" [position]="position" [modal]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+					<ng-container *ngIf="!somebodyIsLogged(); then showAccedi"></ng-container>
+						<ng-template #showAccedi>
+							<button pButton [routerLink]="['/login']" type="button" label="Accedi" pTooltip="Clicca per effettuare il login" tooltipPosition="bottom" id="loginButton"></button>
+							<br>
+						</ng-template>
+						<ng-container *ngIf="!controllaSeLoggatoUtente() && !controllaSeLoggatoCorriere() && !controllaSeLoggatoAdmin(); then passDimenticata"></ng-container>
+						<ng-template #passDimenticata>
+							<a [routerLink]="['/inserisciEmailRecuperoPassword']">Password dimenticata <i class="pi pi-shield"></i></a> 
+						</ng-template>
+
+					<div *ngIf="!controllaSeLoggatoUtente() && !controllaSeLoggatoCorriere() && !controllaSeLoggatoAdmin();then lavoraConNoi"></div>
+					<ng-template #lavoraConNoi>
+						<br>
+						<a [routerLink]="['/lavoraConNoi']"> Lavora con noi <i class="pi pi-sitemap"></i></a><br><br>
+					</ng-template>
+					
+					<!--PARTE UTENTI-->
+					<div *ngIf="controllaSeLoggatoUtente();then utenteSi"></div>
+					<ng-template #utenteSi>
+						<hr>
+						<a [routerLink]="['/areaPersonale']"> Area personale utente <i class="pi pi-user"></i></a><br><br>
+						<a [routerLink]="['/cronologiaResi']"> Resi vendite <i class="pi pi-inbox"></i></a><br><br>
+						<a [routerLink]="['/cronologia']"> I tuoi ordini <i class="pi pi-list"></i></a><br><br>
+						<a [routerLink]="['/vendi']"> Carica prodotto <i class="pi pi-replay"></i></a><br><br>
+						<a [routerLink]="['/premi']"> Riscuoti premi <i class="pi pi-vimeo"></i></a><br><br>
+						<a [routerLink]="['/preferiti']"> I miei preferiti <i class="pi pi-star"></i></a><br><br>
+						<a [routerLink]="['/prodottiVenditore']"> I miei prodotti <i class="pi pi-box"></i></a>
+					</ng-template>
+
+					<!--PARTE CORRIERI-->
+					<div *ngIf="controllaSeLoggatoCorriere();then corriereSi"></div>
+					<ng-template #corriereSi>
+						<hr>
+						<a [routerLink]="['/gestioneCorrieri']"> Acquisisci spedizioni <i class="pi pi pi-check"></i></a><br><br>
+						<a [routerLink]="['/areaCorriere']"> Aggiorna spedizioni <i class="pi pi-globe"></i></a><br><br>
+					</ng-template>
+
+					<!--PARTE ADMIN-->
+					<div *ngIf="controllaSeLoggatoAdmin();then adminSi">here is ignored</div>
+					<ng-template #adminSi>
+						<hr>
+						<a [routerLink]="['/gestioneAdmin']"> Area Personale Admin <i class=" pi pi-user"></i></a><br><br>
+						<a [routerLink]="['/gestioneUtenti']"> Gestisci Utenti <i class="pi pi-user-edit"></i></a><br><br>
+						<a [routerLink]="['/gestioneProdotti']"> Gestisci Prodotti <i class="pi pi-box"></i></a><br><br>
+						<a [routerLink]="['/richiesteCorrieri']"> Richieste Corrieri <i class="pi pi-at"></i></a><br><br>
+						<a [routerLink]="['/visualizzaColloqui']"> Elenco Colloqui <i class="pi pi-align-justify"></i></a><br><br>
+						<a [routerLink]="['/approvaRecensione']"> Approva Recensioni <i class="pi pi pi-book"></i></a><br><br>
+					</ng-template>
+
+					<hr>
+					<ng-template pTemplate="footer">
+						<div class="row">
+							<div id="menuSinistra">
+								<div *ngIf="controlloLogin();then thenBlock">here is ignored</div>
+								<ng-template #thenBlock>
+									<button pButton (click)="doLogout()" type="button" label="Logout" pTooltip="Clicca per effettuare il logout" tooltipPosition="bottom" id="logoutButton"></button>
+								</ng-template>
+							</div>
+							<div id="menuCentrale"></div>
+							<div id="menuDestra">
+								Sei un nuovo utente? <br>
+								<a [routerLink]="['/registrazione']">Registrati</a>
+							</div>
+						</div>
+					</ng-template>
+				</p-dialog>
+			</div>
+			<div id="settimoBarra">
+				<div *ngIf="controllaSeLoggatoAdmin() || controllaSeLoggatoCorriere();then carrelloNo else carrelloSi"></div>
+				<ng-template #carrelloNo></ng-template>
+				<ng-template #carrelloSi>
+					<p-button id="btnCarrello" badge="{{getNumInCart()}}" [routerLink]="['/carrello']" badgeClass="p-badge-danger" [style]="{'background-color': '#15161D', border: 'none', padding: '5%'}"><i class="pi pi-shopping-cart" style="font-size: 1.5rem"></i></p-button>
+				</ng-template>
+			</div>
+		</div>
+		<div id="categorie" class="row">
+			<div *ngIf="controllaSeLoggatoAdmin() || controllaSeLoggatoCorriere();then categorieNo else categorieSi"></div>
+			<ng-template #categorieNo></ng-template>
+			<ng-template #categorieSi>
+				<div id="primaCat">
+					<button [routerLink]="['/Computer']" pButton type="button"><label class="pi pi-desktop"> COMPUTER</label></button>
+				</div>	
+				<div id="secondaCat">
+					<button [routerLink]="['/Smartphone']" pButton type="button"><label class="pi pi-mobile"> SMARTPHONE</label></button>
+				</div>	
+				<div id="terzaCat">
+					<button [routerLink]="['/Tablet']" pButton type="button"><label class="pi pi-tablet"> TABLET</label></button>
+				</div>	
+				<div id="quartaCat">
+					<button [routerLink]="['/Accessori']" pButton type="button"><label class="pi pi-briefcase"> ACCESSORI</label></button>
+				</div>
+			</ng-template>
+		</div>
+	</div>
+	<p-dialog [(visible)]="displayDialog" header="Avviso" [modal]="true" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+		<p><strong>{{avviso}}</strong></p>
+			<ng-template pTemplate="footer">
+				<p-button (click)="displayDialog=false" label="Ok" styleClass="p-button-text"></p-button>
+			</ng-template>
+	</p-dialog>
+</body>
+</html>

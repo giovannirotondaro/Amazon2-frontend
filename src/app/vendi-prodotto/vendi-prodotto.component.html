@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Techzon</title>
+</head>
+<body>
+	
+    <div class="wrapper">
+		<div class="row" id="reg">
+            <div id="divImgLatoSinistro">
+				<a href="https://ibb.co/vBRjLxC">
+					<img src="https://i.ibb.co/xsd7zSK/tech-icon-png-3-2.png" alt="tech-icon-png-3-2" border="0" width="100%" height="20%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/TRk1xRQ">
+					<img src="https://i.ibb.co/pZxQBZH/picture.png" alt="picture" border="0" width="100%" height="20%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/G9Nxky0">
+					<img src="https://i.ibb.co/m0gDtkG/world2.png" alt="world2" border="0" width="100%" height="20%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/hWJnn5Y">
+					<img src="https://i.ibb.co/wWFbbHc/Daco-222378.png" alt="Daco-222378" border="0" width="100%" height="15%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a href="https://ibb.co/FH4KzZk">
+					<img src="https://i.ibb.co/TWMktjD/picture-PIC.png" alt="picture-PIC" border="0" width="100%" height="23%">
+				</a>
+				<a href="https://ibb.co/NLZv56Y">
+					<img src="https://i.ibb.co/vJZFpxz/stripes2.png" alt="stripes2" border="0" width="100%" height="5%">
+				</a>
+				<a id="immagineLatoSinistro" href="https://ibb.co/DCgmgkH">
+					<img src="https://i.ibb.co/2tYRYP1/tech-icon-png-3-1.png" alt="tech-icon-png-3-1" border="0" width="100%" height="20%">
+				</a>
+            </div>
+            <div id="divCentrale">
+                <br>
+                <div class="row justify-content-center">
+                    <h1>Vendita Prodotto</h1>
+                </div>
+                <div class="row justify-content-center">
+                    Gentile venditore, inserisci il prodotto da vendere. 
+                </div>
+                <br>
+                <form (ngSubmit)="onSubmit()" (submit)="onSubmitImage(formTemplate.value)" #userForm="ngForm">
+                <p-tabView [(activeIndex)]="index" [style]="{'margin':'6%'}" styleClass="height-tv" >
+                    <p-tabPanel header="Dati generali prodotto" [disabled]=caricaFoto>
+                        <div id="contenitore1">
+                        <br>            
+                        <div class="row" id="parte1">
+                            <div id="divTitolo">
+                                <div class="p-field">
+                                    <input type="text" [(ngModel)]="prodotto.titolo" class="form-control" [style]="{'width':'93%','height':'45px'}"  id="titolo" name="titolo" placeholder="Titolo">
+                                    <small id="nome-help"><strong>Inserisci il titolo del prodotto.</strong></small>        
+                                </div>
+                            </div>
+                            
+                            <div id="divCategoria">
+                                <div class="p-field">
+                                    <p-dropdown [style]="{'width':'96%','height':'45px'}" [options]="categorie" [(ngModel)]="prodotto.categoria" name="categoria" placeholder="Categoria"></p-dropdown>
+                                    <br>
+                                    <small id="regione-help"><strong> Seleziona la categoria.</strong></small>
+                                </div>
+                            </div>
+                            <div id="divColore">
+                                <div class="p-field">
+                                    <input type="text" [(ngModel)]="prodotto.colore" [style]="{'width':'80%','height':'45px'}" class="form-control" id="colore" name="colore" placeholder="Colore">
+                                    <small id="nome-help"><strong>Scegli il colore del prodotto</strong></small>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row" id="parte10">
+                            <div id="divPrezzo">
+                                <div class="p-field">
+                                    <input type="text" [(ngModel)]="prodotto.prezzo" [style]="{'width':'93%','height':'45px'}" class="form-control" id="prezzo" name="prezzo" placeholder="Prezzo">
+                                    <small id="nome-help"><strong>Inserisci il prezzo</strong></small>
+                                </div>
+                            </div> 
+                            <div id="divQuantita">
+                                <div class="p-field">
+                                    <input type="text" [(ngModel)]="prodotto.quantita" [style]="{'width':'95%','height':'45px'}" class="form-control" id="quantita" name="quantita" placeholder="Quantita">
+                                <small id="nome-help"><strong>Inserisci la quantità</strong></small>   
+                                </div>
+                            </div>    
+                            <div id="divSconto">
+                                <div class="p-field">
+                                    <p-dropdown [style]="{'width':'80%','height':'45px'}" [options]="sconti" [(ngModel)]="prodotto.sconto" name="sconto" optionLabel="nomeSconto"  optionValue="scontoNumber"></p-dropdown>
+                                    <br>
+                                    <small id="regione-help"><strong> Seleziona lo sconto da applicare.</strong></small>
+                                </div>
+                            </div>                    
+                        </div>
+                        <br>
+                        <div class="row" id="divAnteprime">
+                            <div id="divTextAreaAnteprima">
+                                <div class="p-field">
+                                    <textarea rows="6" cols="30" pInputTextarea  [(ngModel)]="prodotto.anteprima" name="anteprima" [style]="{'width':'93%'}"></textarea>
+                                    <br>
+                                    <small id="regione-help"><strong> Anteprima descrizione prodotto.</strong></small>
+                                </div>
+                            </div>
+                            <div id="divTextAreaDescrizione">
+                                <div class="p-field">
+                                    <textarea rows="6" cols="30" [(ngModel)]="prodotto.descrizione" name="descrizione" pInputTextarea  [style]="{'width':'100%'}"></textarea>
+                                    <br>
+                                    <small id="regione-help"><strong> Descrizione prodotto.</strong></small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>        
+                    <div class="row justify-content-center"> 
+                        <p-button icon="pi pi-arrow-right" label="Avanti" (click)="openNext()" id="bottoneAvanti0"></p-button>
+                        <!-- MODALE PER ERRORE NELLA COMPILAZIONE DEI CAMPI-->
+                        <p-dialog header="Attenzione" id="modal" [(visible)]="apriModaleErroreCampi" [style]="{width: '10vw', height: '250px', 'min-width':'500px'}">
+                            <div class="row" id="rigaLoginSbagliato">
+                            <div id="sinistraModale">
+                                <div id="rigaInModale">
+                                <h5>Per proseguire devi compilare tutti i campi richiesti</h5>
+                                </div>
+                            </div>  
+                            <div id="destraModale">
+                                <i class="pi pi-times-circle" style="font-size: 3rem" id="iconModale"></i>
+                            </div>
+                            </div>
+                            <ng-template pTemplate="footer">
+                                <div class="row justify-content-center" id="rigaInModale">
+                                    <p-button (click)="chiudiModaleErroreCampi()" label="Chiudi" styleClass="p-button-text" [style]="{height: '30px', 'margin-top': '6px'}"></p-button>
+                                </div>
+                            </ng-template>
+                        </p-dialog>
+                    </div>
+                    </p-tabPanel>
+                        
+                    <p-tabPanel header="Carica foto" [disabled]=caricaFoto>
+                        <div id="contenitore2">
+                            <div class="row">
+                                <div id="divImgProdotto1">
+                                    <div class="text-center" id="imgRiquadro">
+                                        <img [src]="imgSrc1" (click)="fileUploader2.click()" id="imgCaricamento">
+                                    </div>
+                                                                
+                                    <div id="divCaricaImg" class="text-center">
+                                        <label>Seleziona l'immagine</label>
+                                        <input type="file" #fileUploader2 (change)="showPreview1($event)"  accept="image/*" class="form-control">
+                                    </div>
+                                </div>
+                                <div id="divImgProdotto2">
+                                    <div class="text-center" id="imgRiquadro">
+                                        <img [src]="imgSrc2" (click)="fileUploader1.click()" id="imgCaricamento">
+                                        </div>
+                                    
+                                        <div id="divCaricaImg">
+                                        <label>Seleziona l'immagine</label>
+                                        <input type="file" #fileUploader1  (change)="showPreview2($event)"  accept="image/*" class="form-control">
+                                        </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div id="divImgProdotto3">
+                                    <div class="text-center" id="imgRiquadro">
+                                        <img [src]="imgSrc3" (click)="fileUploader3.click()" id="imgCaricamento">
+                                    </div>
+                                                                
+                                    <div id="divCaricaImg" class="text-center">
+                                        <label>Seleziona l'immagine</label>
+                                        <input type="file" #fileUploader3 (change)="showPreview3($event)"  accept="image/*" class="form-control">
+                                    </div>
+                                </div>
+                                <div id="divImgProdotto4">
+                                    <div class="text-center" id="imgRiquadro">
+                                        <img [src]="imgSrc4" (click)="fileUploader4.click()" id="imgCaricamento">
+                                        </div>
+                                    
+                                        <div id="divCaricaImg" class="text-center">
+                                        <label>Seleziona l'immagine</label>
+                                        <input type="file" #fileUploader4  (change)="showPreview4($event)" accept="image/*" class="form-control">
+                                        </div>
+                                </div>      
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row justify-content-center">
+                            <p-button icon="pi pi-arrow-left" label="Indietro" (click)="openPrev()" id="bottoneIndietro1"></p-button> 
+                            <p-button icon="pi pi-arrow-right" label="Avanti" (click)="openNext()" id="bottoneAvanti1"></p-button>
+                             <!-- MODALE PER ERRORE NELLA COMPILAZIONE DEI CAMPI-->
+                            <p-dialog header="Attenzione" id="modal" [(visible)]="apriModaleErroreFoto" [style]="{width: '10vw', height: '250px', 'min-width':'500px'}">
+                                <div class="row" id="rigaInModale">
+                                <div id="sinistraModale">
+                                    <div id="rigaInModale">
+                                    <h5>Per proseguire è necessario caricare tutte e quattro le foto del prodotto</h5>
+                                    </div>
+                                </div>  
+                                <div id="destraModale">
+                                    <i class="pi pi-times-circle" style="font-size: 3rem" id="iconModale"></i>
+                                </div>
+                                </div>
+                                <ng-template pTemplate="footer">
+                                    <div class="row justify-content-center" id="rigaInModale">
+                                        <p-button (click)="chiudiModaleErroreFoto()" label="Chiudi" styleClass="p-button-text" [style]="{height: '30px', 'margin-top': '6px'}"></p-button>
+                                    </div>
+                                </ng-template>
+                            </p-dialog>
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Altre info" [disabled]=altreInfo>
+                        <div class="row justify-content-center">
+                            <h4>&nbsp;&nbsp;Compila questa parte se non si tratta di un accessorio!</h4>
+                        </div>
+                        <div id="contenitore3">
+                            <div class="row" id="divNoAccessori">
+                                <div id="divMarca">
+                                    <div class="p-field">
+                                        <input type="text" [(ngModel)]="prodotto.marca" [style]="{'width':'90%','height':'45px'}" class="form-control" id="categoria" name="marca" placeholder="Marca">
+                                        <small id="nome-help"><strong>Inserisci la marca del prodotto.</strong></small>        
+                                    </div>
+                                </div>
+
+                                <div id="divAltezza">
+                                    <div class="p-field">
+                                        <input type="text" [(ngModel)]="altezza" [style]="{'width':'80%','height':'45px'}" class="form-control" id="categoria" name="altezza" placeholder="Altezza">
+                                        <small id="nome-help"><strong>Altezza.</strong></small>        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="r2"> 
+                                
+                                <div id="divModello">
+                                    <div class="p-field">
+                                        <input type="text" [(ngModel)]="prodotto.modello" [style]="{'width':'94%','height':'45px'}" class="form-control" id="peso" name="modello" placeholder="Modello">
+                                        <small id="nome-help"><strong>Modello.</strong></small>        
+                                    </div>
+                                </div>
+                                
+                                <div id="divPeso">
+                                    <div class="p-field">
+                                        <input type="text" [(ngModel)]="prodotto.peso" [style]="{'width':'80%','height':'45px'}" class="form-control" id="peso" name="peso" placeholder="Peso">
+                                        <small id="nome-help"><strong>Peso in Kg.</strong></small>        
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div id="divMemoriaArc">
+                                    <div class="p-field">
+                                        <input type="text" [(ngModel)]="prodotto.memoriaArchiviazione" [style]="{'width':'83%','height':'45px'}" class="form-control" id="peso" name="memArc" placeholder="Memoria Archiviazione">
+                                        <small id="nome-help"><strong>Memoria di arch. Gb.</strong></small>        
+                                    </div>
+                                </div>
+                                <div id="divMemoriaRam">
+                                    <div class="p-field">
+                                        <input type="text" [(ngModel)]="prodotto.memoriaRam" [style]="{'width':'83%','height':'45px'}" class="form-control" id="peso" name="memRam" placeholder="Memoria Ram">
+                                        <small id="nome-help"><strong>Memoria Ram Gb.</strong></small>        
+                                    </div>
+                                </div>
+                                <div id="divLarghezza">
+                                    <div class="p-field">
+                                        <input type="text" [(ngModel)]="larghezza" [style]="{'width':'80%','height':'45px'}" class="form-control" id="categoria" name="larghezza" placeholder="Larghezza">
+                                        <small id="nome-help"><strong>Larghezza.</strong></small>        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="divFotoSpazioSinistra"></div>
+                            <div id="divFoto">
+                                <img src="https://i.ibb.co/6nBppzB/logo-Vendita.png" id="logoImgVendita" alt="logo-Vendita" border="0">
+                            </div>
+                            <div id="divFotoSpazioDestra"></div>
+                        </div>
+                
+                        <div class="row justify-content-center">
+                            <p-button icon="pi pi-arrow-left" label="Indietro" (click)="openPrev()" id="bottoneIndietro2"></p-button> 
+                            <button pButton pRipple type="submit" label="Carica" class="p-button-raised" id="bottoneAvanti2" name="b"></button>
+                        </div>
+                    </p-tabPanel>
+                    
+                </p-tabView>
+                </form>
+			</div>
+            
+            <div id="divImgLatoDestro">
+				<a href="https://ibb.co/GHFGY78">
+					<img src="https://i.ibb.co/vXDfy1T/handphone2.png" alt="handphone2" border="0" width="100%" height="65%">
+				</a>
+				<a href="https://ibb.co/2NfqMyG">
+					<img src="https://i.ibb.co/NSHxNsc/pngwing-com.png" alt="pngwing-com" border="0" width="100%" height="20%">
+				</a>
+				<a href="https://ibb.co/68V6TV1">
+					<img src="https://i.ibb.co/QkzsTzC/buildings.png" alt="buildings" border="0" width="100%" height="65%">
+				</a>
+            </div>
+        </div>
+    </div> 
+    <p-dialog [contentStyle]="{'background-color': 'transparent'}" styleClass="spinDialog" [(visible)]="displayChargeDialog" [resizable]="false" [closable]="false" [showHeader]="false" [modal]="true">
+		<p-progressSpinner></p-progressSpinner>
+	</p-dialog>
+</body>
+</html>

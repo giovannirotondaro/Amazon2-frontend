@@ -1,0 +1,30 @@
+.cardCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.btnCenter {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    border: 1px solid green;
+}
+
+.downloadBtn {
+    padding-left: 5%;
+    padding-bottom: 5%;
+}
+
+.avantiBtn {
+    float: right;
+    margin-top: 1px;
+}
+
+.paddingLeft10 {
+    padding-left: 10%;
+}

@@ -1,0 +1,149 @@
+html{
+    min-width: 950px !important;
+    width: 100% !important;
+    padding: 0% !important;
+    margin: 0% !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  
+  body{
+    width: 100% !important;
+    height: 950px;
+    padding: 0% !important;
+    margin: 0% !important;
+  }
+  
+  #imgLatoSinisto{
+    margin-left: 1.5% !important;
+  }
+  
+  .wrapper {
+    width: 100%;
+    height: 800px;
+  }
+  
+  #v1{
+    width: 10%;
+    height: 800px;
+  }
+  
+  #parteReg{
+    width: 80%;
+    height: 950px;
+    background-color: gainsboro;
+  }
+  
+  #v2{
+    width: 10%;
+    height: 800px;
+  }
+
+  #sceltaUtente{
+      margin-top: 5px;
+  }
+
+  #condizioni{
+      padding: 20px;
+  }
+
+  #linea{
+      background-color: black;
+      width: 100%;
+  }
+
+  #sinistraRiga{
+    width: 33%;
+  }
+
+  #centroRiga{
+    width: 34%;
+  }
+
+  #destraRiga{
+    width: 33%;
+  }
+
+  #centroRiga{
+    margin: 0;
+  }
+
+  #rigaRegistrati{
+    margin: 0;
+    width: 100%;
+  }
+
+  #lineaSinistra{
+    width: 33%;
+  }
+
+  #lineaCentrale{
+    width: 34%;
+    text-align: center;
+  }
+
+  #lineaDestra{
+    width: 33%;
+  }
+
+  #centraPasswordRecuperata{
+    text-align: center;
+  }
+
+  #scrittaSpedizione{
+    color: white;
+  }
+
+  #terzoBarra{
+    color: white;
+  }
+
+#rigaInModale{
+  margin: 0%;
+}
+
+#sinistraModale{
+  height: 70px;
+  width: 70%;
+}
+
+#destraModale{
+  height: 70px;
+  width: 30%;
+}
+
+#rigaLoginSbagliato{
+  margin: 0;
+}
+
+#iconModale{
+  color: red;
+}
+
+#passDiv{
+  background-color: blue;
+}
+
+#campoUsername{
+  width: 65%;
+  text-align: center;
+}
+
+#campoPass{
+  width: 65%;
+  text-align: center;
+}
+
+#rigaBarra{
+    margin: 0;
+}
+
+#primaRiga{
+  width: 100%;
+  height: 100px;
+}
+
+#logoImg{
+  width: 260px;
+  height: 100px;
+}

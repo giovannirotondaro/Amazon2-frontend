@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Techzon</title>
+</head>
+
+<body>
+    <div>
+        <section class="mb-5">
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="mdb-lightbox">
+                        <div class="row product-gallery mx-1">
+                            <div class="col-9 mb-0">
+                                <figure class="view overlay rounded z-depth-1 main-img">
+                                    <img src="{{prodotto.url1}}" class="img-fluid z-depth-1">
+                                </figure>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <p-image src="{{prodotto.url1}}" alt="Image" width="120" [preview]="true"></p-image>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <p-image src="{{prodotto.url2}}" alt="Image" width="120" [preview]="true"></p-image>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <p-image src="{{prodotto.url3}}" alt="Image" width="120" [preview]="true"></p-image>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <p-image src="{{prodotto.url4}}" alt="Image" width="120" [preview]="true"></p-image>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div class="sconto" *ngIf="prodotto.sconto == 0; else noSconto">
+                                <h4> {{prodotto.titolo}} </h4>
+                                <p class="mb-2 text-muted text-uppercase small"> {{prodotto.categoria}} </p>
+                                <span class="mr-1"><strong> {{prodotto.prezzo}} € </strong></span>
+                            </div>
+                            <ng-template #noSconto>
+                                <div class="sconto">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h4> {{prodotto.titolo}} </h4>
+                                                <p class="mb-2 text-muted text-uppercase small"> {{prodotto.categoria}} </p>
+                                                <h6>
+                                                    <span class="mr-1"><strong><del> {{prodotto.prezzo}} € </del></strong></span>
+                                                </h6>
+                                                <h5>
+                                                    <p><span class="mr-1" style="color:rgb(250, 30, 30);"><strong> {{(prodotto.prezzo-(prodotto.prezzo*(prodotto.sconto/100))).toFixed(2)}} € </strong></span></p>
+                                                </h5>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        <p-rating [iconOnStyle]="{'color':'#ffab18'}" [readonly]="true" [(ngModel)]="mediaRecensioniProdotto" [cancel]="false "></p-rating>
+                                                        <p><strong>{{recensioniTotali}} valutazioni</strong></p>
+                                                    </div>
+                                                    <div class="col-4" *ngIf="mediaRecensioniProdotto > 0">
+                                                        <h6><strong>{{mediaRecensioniProdotto.toFixed(1)}} su 5</strong></h6>
+                                                    </div>
+                                                </div>
+                                                <img id="imgOffer" src="https://i.ibb.co/PjbbzPp/Pngtree-special-offer-sale-banner-design-6728966.png" width="150" alt="Pngtree-special-offer-sale-banner-design-6728966" border="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                            <p class="pt-1"> {{prodotto.anteprima}}
+                            </p>
+                            <div class="table-responsive">
+                                <table class="table table-sm table-borderless mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <th class="pl-0 w-50" scope="row"><strong>Pezzi Disponibili</strong></th>
+                                            <div class="Disponibilita" *ngIf="!prodotto.disponibile; else NonDisponibile">
+                                                <td><span class="mr-1" style="color:rgb(250, 30, 30);"><strong>NON DISPONIBILE</strong></span></td>
+                                            </div>
+                                            <ng-template #NonDisponibile>
+                                                <td>{{prodotto.quantita}}</td>
+                                            </ng-template>
+                                        </tr>
+                                        <tr>
+                                            <th class="pl-0 w-50" scope="row"><strong>Colore</strong></th>
+                                            <td>{{prodotto.colore}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="pl-0 w-50" scope="row"><strong>Venduto da: </strong></th>
+                                            <td>{{prodotto.vendutoDa?.cognome}} {{prodotto.vendutoDa?.nome}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <hr>
+                            <div class="row pb-3">
+                                <div class="col-4 d-grid">
+                                    <p-splitButton label="Segnala" icon="pi pi-flag-fill" [model]="items" styleClass="p-button-danger p-mb-2"></p-splitButton>
+                                    <p-dialog header="Modulo di segnalazione utente" [(visible)]="displayBasic" [modal]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false" [style]="{width: '40vw', height: '450px', 'min-width':'750px'}">
+                                        <div id="contenuto">
+                                            <div class="row">
+                                                <div id="radio">
+                                                    <div class="row justify-content-center" id="rigaRadio">
+                                                        Scegli il motivo della segnalazione
+                                                    </div>
+                                                    <div class="row" id="rigaRadio">
+                                                        <div id="sinistraRadio">
+                                                            <p-radioButton name="selectedValue" value="val1" [(ngModel)]="motivazione" inputId="azione1"></p-radioButton>
+                                                        </div>
+                                                        <div id="destraRadio">
+                                                            <label for="azione1"> &nbsp; Utente malintenzionato</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" id="rigaRadio">
+                                                        <div id="sinistraRadio">
+                                                            <p-radioButton name="selectedValue" value="val2" [(ngModel)]="motivazione" inputId="azione2"></p-radioButton>
+                                                        </div>
+                                                        <div id="destraRadio">
+                                                            <label for="azione2"> &nbsp; Utente Franco</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row" id="rigaRadio">
+                                                        <div id="sinistraRadio">
+                                                            <p-radioButton name="selectedValue" value="val3" [(ngModel)]="motivazione" inputId="azione3"></p-radioButton>
+                                                        </div>
+                                                        <div id="destraRadio">
+                                                            <label for="azione3"> &nbsp; Utente Simone</label>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row justify-content-center" id="rigaRadio">
+                                                        Inserisci una motivazione libera per la richiesta di blocco!
+                                                    </div>
+                                                    <div class="row justify-content-center" id="rigaRadio">
+                                                        <textarea rows="2" cols="40" [(ngModel)]="motivazioneAggiuntiva" pInputTextarea></textarea>
+                                                    </div>
+
+                                                </div>
+                                                <div id="imgSegnala">
+                                                    <p-image src="https://i.ibb.co/whdJ8Xn/blocca.png" alt="Image" id="immagineBlocco" width="150"></p-image>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-between"> </div>
+                                        </div>
+                                        <ng-template pTemplate="footer">
+                                            <div class="row justify-content-center">
+                                                <button pButton pRipple type="button" (click)="segnalaUtente()" (click)="displayBasic=false" [style]="{'margin-top': '15px',height: '40px'}" label="Warning" class="p-button-raised p-button-warning p-button-text"></button>
+                                            </div>
+                                        </ng-template>
+                                    </p-dialog>
+                                </div>
+                                <div class=" col-6 d-grid ">
+                                    <p-button (click)="addInCart(prodotto.id)" label="Aggiungi al carrello " icon="pi pi-shopping-cart " styleClass="p-button-info"></p-button>
+                                </div>
+                                <div class=" col-2 d-grid ">
+                                    <button pButton pRipple (click)="aggiungiAiPreferiti(prodotto)" type="button" icon="pi pi-heart" class="p-button-rounded p-button-warning"></button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <div>
+            <a id="description-tab ">
+                <h5>Descrizione completa</h5>
+            </a>
+            <div>
+                <p class="pt-1 "> {{prodotto.descrizione}}
+                    <br>
+                    <br>
+                    <ng-template [ngIf]="prodotto.categoria !='Accessori' ">
+                        <div>
+                            <a>
+                                <h5>Informazioni aggiuntive</h5>
+                            </a>
+                            <table class="table table-striped table-bordered mt-3 ">
+                                <thead>
+                                    <tr>
+                                        <th scope="row " class="w-150 dark-grey-text h6 ">Categoria</th>
+                                        <td><em>{{prodotto.categoria}}</em></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row " class="w-150 dark-grey-text h6 ">Marca</th>
+                                        <td><em>{{prodotto.marca}}</em></td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="row " class="w-150 dark-grey-text h6 ">Dimensioni</th>
+                                        <td><em>{{prodotto.dimensioni}} cm</em></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row " class="w-150 dark-grey-text h6 ">Modello</th>
+                                        <td><em>{{prodotto.modello}}</em></td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="row " class="w-150 dark-grey-text h6 ">Peso</th>
+                                        <td><em>{{prodotto.peso}} kg</em></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row " class="w-150 dark-grey-text h6 ">Memoria Archiviazione</th>
+                                        <td><em>{{prodotto.memoriaArchiviazione}} GB</em></td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="row " class="w-150 dark-grey-text h6 ">Memoria RAM</th>
+                                        <td><em>{{prodotto.memoriaRam}} GB</em></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row " class="w-150 dark-grey-text h6 ">Colore</th>
+                                        <td><em>{{prodotto.colore}}</em></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 mb-md-0">
+                            <a>
+                                <h5>Recensioni</h5>
+                            </a>
+                            <ng-template ngFor let-recens [ngForOf]='recensioni' pTemplate="item">
+                                <div *ngIf="recens.approvata">
+                                    <div class="media mt-3 mb-4 ">
+                                        <img class="d-flex mr-3 z-depth-1 " src="{{recens.creataDa.immagineProfilo}}" width="62 " alt="Generic placeholder image ">
+                                        <div class="media-body ">
+                                            <div class="d-sm-flex justify-content-between ">
+                                                <p class="mt-1 mb-2 ">
+                                                    <strong> {{recens.creataDa.username}} </strong>
+                                                    <span>– </span><span> {{recens.dataAggiunta}}  </span>
+                                                    <p-rating [iconOnStyle]="{'color':'#ffab18'}" [ngModel]="recens.rating" [readonly]="true" [cancel]="false"></p-rating>
+                                                </p>
+
+                                            </div>
+                                            <p class="mb-0 "> {{recens.recensione}} </p>
+                                        </div>
+                                        <form (ngSubmit)="rimuoviRecensione(recens)" #userForm="ngForm">
+                                            <div *ngIf="recens.creataDa.username==username; ">
+                                                <button pButton pRipple type="button " icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text"></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <hr>
+                        </div>
+                        <br>
+                        <div class="col-md-6 mb-4 mb-md-0 ">
+                            <div class="recensione " *ngIf="username !=null; else noRecensione ">
+                                <div class="row ">
+                                    <div class="col-md-6 mb-4 mb-md-0 ">
+                                        <h5>Aggiungi una recensione</h5>
+                                    </div>
+                                    <div class="col-md-6 mb-4 mb-md-0 ">
+                                        <p-rating [iconOnStyle]="{'color':'#ffab18'}" [(ngModel)]="rating " [cancel]="false "></p-rating>
+                                    </div>
+                                </div>
+                                <form (ngSubmit)="aggiungiRecensione() " #userForm="ngForm">
+                                    <div class="md-form md-outline ">
+                                        <textarea type="text " [(ngModel)]="recensioneDaAggiungere.recensione " class="form-control " id="recensione " name="recensione " placeholder="Scrivi qui "></textarea>
+                                        <label for="recensione ">La tua recensione</label>
+                                    </div>
+                                    <div class="text-right pb-2 ">
+                                        <button type="button " class="btn btn-primary ">Aggiungi la recensione</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <ng-template #noRecensione>
+                                <div class="recensione ">
+                                    <h5> Effetua il login per aggiungere una nuova recensione!</h5>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <p-dialog [(visible)]="displayDialog" header="Avviso" [modal]="true" [style]="{width: '30vw'}" [draggable]="false" [resizable]="false">
+		<p><strong>{{avviso}}</strong></p>
+			<ng-template pTemplate="footer">
+				<p-button (click)="displayDialog=false" label="Ok" styleClass="p-button-text"></p-button>
+			</ng-template>
+	</p-dialog>
+</body>
+</html>

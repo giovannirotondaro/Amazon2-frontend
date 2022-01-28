@@ -1,0 +1,235 @@
+html{
+  min-width: 1150px !important;
+  width: 100% !important;
+  padding: 0% !important;
+  margin: 0% !important;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+  
+body{
+  width: 100% !important;
+  height: 1150px;
+  padding: 0% !important;
+  margin: 0% !important;
+}
+
+#divSinistraImmaginiLato{
+  width: 10%;
+  height: 1150px;
+}
+
+#label{
+  margin: 0;
+  width: 90%;
+}
+
+#parametri{
+  margin: 0;
+  width: 90%;
+}
+
+#tipoCarta{
+  width: 53% !important;
+}
+
+#titolare{
+ width: 32% !important; 
+}
+
+#dataScadenza{
+  width: 15% !important; 
+  position: relative;
+  left: 16%;
+}
+
+#imgCarta{
+  width: 50px;
+  height: 50px;
+}
+
+#divCentrale{
+  width: 80%;
+  height: 1150px;
+  background-color: rgb(216, 213, 213);  
+}
+
+#divDestraImmaginiLato{
+  width: 10%;
+  height: 1150px;
+}
+
+#rigaResocontoSaldo{
+  margin-top: 30px;
+}
+
+#rigaRicaricaConto{
+  margin-top: 30px;
+}
+
+#saldo{
+  width: 60%;
+  height: 500px;
+}
+
+#rigaSaldo{
+  margin:0;
+}
+
+#descrizioneSaldoRiga,#resocontoPuntiRiga,#descrizionePuntiRiga{
+  margin: 0;
+}
+
+#descrizionePunti{
+  width: 25%;
+  margin-top: 60px;
+}
+
+#divInfoPersonali{
+  padding-top: 30px;
+  width: 40%;
+  background-color: rgb(233, 233, 233);
+  height: 1150px;
+}
+
+#rigaFoto, #divFoto{
+  margin: 0% !important;
+}
+
+#divCambiaFoto{
+  height: 250px;
+  width: 100%;
+  margin: 0% !important;
+}
+
+#spazioCentraFoto{
+  width: 32%;
+  margin: 0% !important;
+}
+
+#descrizioneSaldo{
+  width: 25%;
+  margin-top: 60px;
+}
+
+#riferimentoCampo{
+  margin-top: 1%;
+  margin-left: 5%;
+  width: 20%;
+}
+
+#inserisciCampo{
+  width: 75%;
+}
+
+#divCampo{
+  height: 35px; 
+  margin-bottom: 15px;
+  background-color: grey;
+  margin: 0;
+}
+
+.input-hidden {
+  position: absolute;
+  left: -9999px;
+}
+  
+input[type=radio]:checked + label>img {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px 3px #090;
+}
+  
+input[type=radio] + label>img {
+  border: 1px dashed #444;
+  width: 90%;
+  height: 70px;
+  transition: 500ms all;
+}
+  
+input[type=radio]:checked + label>img {
+  transform: 
+    rotateZ(-10deg) 
+    rotateX(10deg);
+}
+
+#divBottoneDatiPersonali{
+  margin: 0;
+}
+
+#fotoUser{
+  width: 160px;
+  height: auto;
+}
+
+#imgCaricamento{
+  width: 100%;
+  height: 160px;
+  border-radius: 55%;
+}
+
+#fileChooser{
+  margin: 0%;
+}
+
+#float-input{
+  border-left: solid 4px;
+  height: 35px;
+  background-color: gainsboro;
+}
+
+#rigaInModale{
+  margin: 0%;
+}
+
+.divRiga{
+  padding-bottom: 4%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#primoPar{
+  width: 5%;
+}
+
+#secondoPar{
+  width: 15%;
+  text-align: center;
+}
+
+#terzoPar{
+  width: 27.50%;
+  text-align: center;
+}
+
+#quartoPar{
+  width: 23.75%;
+  text-align: center;
+}
+
+#quintoPar{
+  width: 23.75%;
+  text-align: center;
+}
+
+#sestoPar{
+  width: 5%;
+  text-align: center;
+}
+
+.labelDiv{
+  text-align: left;
+}
+
+.labelPar{
+  margin-bottom: 0 !important;
+}
+
+.centerLabel{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+::ng-deep .p-knob-text{
+  font-size: 15px !important;
+}

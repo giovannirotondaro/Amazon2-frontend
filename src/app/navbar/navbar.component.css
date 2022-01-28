@@ -1,0 +1,230 @@
+html{
+    min-width: 1100px !important;
+    width: 100% !important;
+    padding: 0% !important;
+    margin: 0% !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+body{
+    width: 100% !important;
+    padding: 0% !important;
+    margin: 0% !important;
+}
+
+#logoImg{
+    width: 100%;
+    height: 90px;
+    min-width: 100% !important;
+}
+
+#navbar{
+    width: 100%;
+    height: 132px;
+    position: sticky;
+    background-color:#15161D;
+    top: 0;
+    z-index: 1;
+}
+
+.labelDiv{
+    text-align: left;
+}
+
+.labelP{
+    margin-bottom: 0 !important;
+}
+
+.divRow{
+    padding-bottom: 4%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#nuovoHeader{
+    height: 95px;
+    background-color: #15161D;
+}
+
+#zeroBarra{
+    width: 2%;
+}
+
+#primoBarra{
+    width: 13%;
+    background-color: #15161D;
+}
+
+#secondoBarra{
+    width: 25%;
+    background-color: #15161D;
+}
+
+#terzoBarra{
+    width: 25%;
+    background-color: #15161D;
+}
+
+#quartoBarra{
+    width: 6%;
+    background-color:#15161D;
+}
+
+#quintoBarra{
+    width: 10%;
+    position: relative;
+    right: 3%;
+}
+
+#quintoBarra1{
+    margin-top: 13%;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
+#quintoBarra2{
+    color: white;
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#sestoBarra{
+    width: 15%;
+    background-color:#15161D;
+}
+
+#settimoBarra{
+    width: 4%;
+}
+
+#spedizioneButton{
+    position: relative;
+    border: none;
+    top: 27%;
+    left: 10%;
+    width: 60%;
+    padding: 0;
+    background-color: #15161D;
+    font-size: 0.4cm;
+}
+
+#searchButton{
+    position: relative;
+    top: 30%;
+    width: 40%;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    right: 12%;
+}
+
+#categorie{
+    width: 98%;
+    text-align: center;
+    z-index: 1;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#areaBtn{
+    background-color: #15161D;
+    border: none;
+    position: relative;
+    top: 35px;
+    padding: 2%;
+    right: 5%;
+}
+
+#loginButton{
+    margin-bottom: 2%;
+    height: 20px;
+    background-color: rgb(0, 175, 227);
+}
+
+#logoutButton{
+    height: 20px;
+    background-color: rgb(165, 1, 1);
+}
+
+#btnCarrello{
+    top: 38px;
+    position: relative;
+    right: 80%;
+}
+
+/*fine parte destra navBar*/
+button>label{
+    width: 100%
+}
+
+#primaCat{
+    width: 25%;
+}
+
+#secondaCat{
+    width: 25%;
+}
+
+#terzaCat{
+    width: 25%;
+}
+
+#quartaCat{
+    width: 25%;
+}
+
+#categorie > div > button{
+    width: 80%;
+    height: 70%;
+    background-color:transparent;
+    border: none;
+}
+
+::ng-deep .p-dialog-content{
+    z-index: 3 !important;
+    width: 100%;
+    text-align: center;
+    padding-top: 2% !important;
+    padding-bottom: 0px !important;
+}
+  
+::ng-deep .p-dialog{
+    min-width: 200px;
+    width: 25%;
+    position: relative;
+    top: 60px;
+}
+  
+::ng-deep .p-avatar{
+    position: relative;
+}
+
+span{
+    color: white;
+}
+
+.p-autocomplete{
+    width: 100%;
+    left: 2%;
+    top: 30%;
+    height: 40px;  
+}
+
+#menuSinistra{
+    width: 33%;
+}
+
+#menuCentrale{
+    width: 4%;
+}
+
+#menuDestra{
+    width: 63%;
+}
+

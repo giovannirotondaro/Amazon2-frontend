@@ -1,0 +1,114 @@
+html{
+  min-width: 1100px !important;
+  width: 100% !important;
+  padding: 0% !important;
+  margin: 0% !important;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body{
+  width: 100% !important;
+  height: 1100px;
+  padding: 0% !important;
+  margin: 0% !important;
+  background-color: gainsboro;
+}
+
+#imgLatoSinistro{
+  margin-left: 1.5% !important;
+}
+
+.wrapper {
+  width: 100%;
+  height: 800px;
+}
+
+#divImgSinistra{
+  width: 10%;
+  height: 800px;
+}
+
+#divImgDestra{
+  width: 10%;
+  height: 800px;
+}
+
+#parteCentrale{
+  width: 80%;
+  height: 1300px;
+}
+
+#campoData{
+  width: 96%;
+}
+
+#campoNumero{
+  width: 96%;
+}
+  
+#divData{
+  left:4%;
+  width: 31%;
+  margin-left: 2% !important;
+}
+    
+#divNome{
+  width: 31%;
+  margin-left: 2%!important;
+}
+  
+#divCognome{
+    width: 31%;
+    margin-left: 2% !important;
+}
+  
+#divEmail{
+  width: 31%;
+  margin-left: 2% !important;
+}
+  
+#divNumero{
+  width: 31%;
+  margin-left: 2% !important;
+}
+
+#divGenere{
+  width: 31%;
+}  
+  
+#genere-help{
+  margin-left: 45% !important;
+}
+  
+#titolo{
+  margin-left: 2%;
+}
+
+#curriculumCaricamento{
+  width: 150px;
+  height: 130px;
+  border-radius: 50%;
+}
+  
+#selezionaCurriculum{
+  display: block;
+  text-align: center;
+}
+  
+ #scegliCurriculum{
+  width: 30%;
+}
+
+#bottoneIndietro{
+  margin-right: 1%;
+}
+
+#bottoneRegistrati{
+  margin-left: 10%;
+}
+
+::ng-deep .spinDialog{
+  height: 150px;
+  box-shadow: none;
+}
