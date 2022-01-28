@@ -1,7 +1,7 @@
 # Frontend repository
 ## Questo progetto è stato sviluppato per il corso di ASD utilizzando Angular, SpringBoot e PrimeNG.
 
-
+![screen1](https://i.ibb.co/TL2nDQY/tecno-Zone-logo.png)
 Sviluppato dal Team Amazon 2:
 + [Davide Ragona]
 + [Giovanni Rotondaro]
