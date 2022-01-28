@@ -1,27 +1,51 @@
-# ProgettoAgile
+# Frontend repository
+## Questo progetto è stato sviluppato per il corso di ASD utilizzando Angular, SpringBoot e PrimeNG.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
 
-## Development server
+Sviluppato dal Team Amazon 2]:
++ [Davide Ragona]
++ [Giovanni Rotondaro]
++ [Santino Locanto]
++ [Bogdan Sorin Miauca]
++ [Paolo Boca]
++ [Massimo Pio Iorio]
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Informazioni per il corretto funzionamento del progetto
+Scaricare entrambi i repository (backend e frontend).
+E' necessario inoltre, scaricare i seguenti package da linea di comando:
+```
+npm install
+npm install -g @angular/cli
+npm install primeng --save
+npm install primeicons --save
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Dopo l'installazione, è possibile esegure l'applicazione con il seguente comando:
+```
+ng serve -o
+```
 
-## Build
+Indichiamo di seguito alcune credenziali di utenti già esistenti per poter accedere al sito web, altrimenti sarà possibilie crearne di nuovi.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Utente Standard:
+username: giovanni
+password: giovanni
 
-## Running unit tests
+Utente admin:
+username: admin
+password: admin
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Utente corriere:
+username: corriere_7104
+password: b8vqZO8Ppd
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Riportiamo di seguito alcune immagini dell'applicazione web .
 
-## Further help
+![screen1](https://i.ibb.co/kMy5YDH/Schermata-2022-01-28-alle-14-48-37.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![screen2](https://i.ibb.co/bmjtHH3/Schermata-2022-01-28-alle-14-48-53.png)
+
+![screen3](https://i.ibb.co/4WfdcmV/Schermata-2022-01-28-alle-14-49-28.png)
+
